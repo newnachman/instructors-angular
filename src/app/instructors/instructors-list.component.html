@@ -1,0 +1,30 @@
+<h2>    
+    some content from: instructors-list component!
+</h2>
+ <div >
+    
+    <div class='col-md-4'>
+        <p>Filter By</p>
+        <input type='text' 
+        [(ngModel)] = 'listFilter'/>
+    </div>
+
+    <div
+    *ngIf='instructors'
+    >
+    
+        <div class="kdkd" 
+       *ngFor =  'let inst of filteredInstructors'
+    >
+            <div
+                [routerLink]="['/instructor', inst.instId]" 
+                style="border: 1px solid grey; margin: 10px; padding: 20px;"
+            >
+                <div>{{inst.instId}}</div>
+                <div>{{inst.instName}}</div>
+                <div>{{inst.instTitle}}</div>
+                <div>{{inst.instField}}</div> 
+            </div>    
+        </div>
+    </div>
+</div> 
