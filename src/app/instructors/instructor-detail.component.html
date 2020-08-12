@@ -2,7 +2,23 @@
 
 <h2>instructor detail page</h2>
 <p>{{crntID}}</p>
+<div
+*ngIf='instructors'
+>
 
+    <div class="kdkd" >
+        <div
+            style="border: 1px solid grey; margin: 10px; padding: 20px;"
+        >
+            
+            <div>{{currentInstructor.instName}}</div> 
+            <div>{{currentInstructor.instField}}</div>
+            <div>{{currentInstructor.instTitle}}</div>
+            <div>{{currentInstructor.instDescription}}</div>
+            <div>{{currentInstructor.instImage}}</div>
+        </div>    
+    </div>
+</div>
 <div class="card-footer">
     <button class="btn btn-outline-secondary"
         (click)= 'onBack()' 

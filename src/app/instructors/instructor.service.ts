@@ -12,7 +12,7 @@ export class InstructorService {
     private instructortUrl = 'api/instructors/instructors.json';
 
     constructor(private http: HttpClient) {}
-     
+      
     getInstructors():Observable<IInstructor[]>{
       return this.http.get<IInstructor[]>(this.instructortUrl).pipe(
         tap(data => console.log('All: ' + JSON.stringify(data))),

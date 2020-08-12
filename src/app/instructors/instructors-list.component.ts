@@ -30,7 +30,7 @@ export class InstructorsListComponent {
       performFilter(filterBy: string): IInstructor[]{
           filterBy = filterBy.toLocaleLowerCase();
           return this.instructors.filter((instructors: IInstructor) =>
-          instructors.instName.toLocaleLowerCase().indexOf(filterBy) !== -1)
+          instructors.instField.toLocaleLowerCase().indexOf(filterBy) !== -1)
       }
     //   toggleImage(): void {
     //       this.showImage = !this.showImage;
