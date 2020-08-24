@@ -1,0 +1,32 @@
+<h1>Create Iinstructor Page!</h1>
+
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert name" [(ngModel)] = 'name'/>
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert field" [(ngModel)] = 'field'/>
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert a short title" [(ngModel)] = 'title'/>
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert description" [(ngModel)] = 'descr'/>
+
+<input type="file" class="input" name="" id=""  (input)="onInputImg($event)">
+
+<button *ngIf=showBtn class="btn create"
+
+(click)= 'submitCreate()' 
+>
+    <i class="fa fa-check"></i>
+    Create!
+</button>
+<div *ngIf='errMsg' class="ErrMsg">
+    must full all fields!
+</div>
+<div *ngIf='imgLoad' class="ErrMsg">
+  | Uploading image ... | 
+</div>
+<div *ngIf='img'>
+    <div>
+        <img src="{{img}}" width="100px" alt="the image of {{name}}">
+        <p>image path is: <br> {{img}}</p>
+    </div>
+</div>
+
+<h1
+*ngIf='responseString'
+>{{name}} your new ID is: {{responseString}}</h1>

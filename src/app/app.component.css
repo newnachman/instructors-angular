@@ -1,0 +1,31 @@
+
+.top {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  background-color: lightseagreen;
+  display: block;
+}
+
+.nav-link:hover {
+  font-weight: 700;
+  /* text-decoration: underline; */
+  transform: scale(1);
+}
+
+.nav-link {
+  margin-right: 10px;
+  color: white;
+  transition: all .5s ease-in-out;
+  border-radius: .25rem;
+  display: block;
+  padding: .5rem 1rem;
+}
+
+.active-link, .active-link:focus, .active-link:active, li.nav-link:focus, li.nav-link:active {
+  color: black;
+  border: 1px solid black;
+  outline: none;
+  font-weight: 700;
+}
+
+

@@ -35,7 +35,7 @@ export class InstructorsListComponent {
     //   toggleImage(): void {
     //       this.showImage = !this.showImage;
     //   }
-      ngOnInit(): void {
+      ngOnInit(): void { 
             this.instructorService.getInstructors().subscribe({
                 next: instructors => {
                     this.instructors = instructors;

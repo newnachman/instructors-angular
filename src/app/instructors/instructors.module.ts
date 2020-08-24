@@ -5,17 +5,20 @@ import { FormsModule } from '@angular/forms';
 
 import { InstructorsListComponent } from './instructors-list.component';
 import { InstructorDetailComponent } from './instructor-detail.component';
+import { InstructorCreateComponent } from './instructor-create.component';
 
 
 @NgModule({
     declarations: [
         InstructorsListComponent,
-        InstructorDetailComponent
+        InstructorDetailComponent,
+        InstructorCreateComponent
     ],
     imports: [
         CommonModule,
         RouterModule.forChild([
             { path: 'instructors', component: InstructorsListComponent },
+            { path: 'create', component: InstructorCreateComponent },
             { path: 'instructor/:id', component: InstructorDetailComponent },
             // { 
             //   path: 'products/:id', 

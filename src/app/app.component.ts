@@ -3,14 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-  <nav 
-  *ngIf='cond'
-  class="navbar navbar-expand navbar-light bg=light">
-  <p  class="navbar-brand">{{title}}</p>
+  <nav class="top navbar navbar-expand navbar-light bg=light">
   
   <ul class="nav nav-pills">
-      <li style="display:inline; border: 2px solid red; margin: 5px; padding: 5px;" class="nav-link" [routerLink]="['/welcome']">Home</li>
-      <li style="display:inline; border: 2px solid red; margin: 5px; padding: 5px;" class="nav-link" [routerLink]="['/instructors']">Instructors List</li>
+      <li style="" class="nav-link" [routerLink]="['/welcome']" routerLinkActive="active-link">Home</li>    
+      <li style="" class="nav-link" [routerLink]="['/instructors']" routerLinkActive="active-link">Instructors List</li>
+      <li style="" class="nav-link" [routerLink]="['/create']" routerLinkActive="active-link">Create instructor</li>
   </ul>
 </nav>
 <div class='container'>
@@ -20,37 +18,9 @@ import { Component } from '@angular/core';
   
   
    
-  `
+  `,
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'instructor-angular **title** from app.component';
-  cond: boolean = true;
-   tempList: any[] = [{
-    "instId": 1,
-    "instName": "meir chaviv",
-    "insrField": "sports"
-},
-{
-    "instId": 2,
-    "instName": "shalom dvir",
-    "insrField": "arts"
-},
-{
-    "instId": 3,
-    "instName": "shalom dvir2",
-    "insrField": "arts"
+   
 }
-]; 
-}
-// <router-outlet></router-outlet>
-// 
-// <div>
-// 	    <h1>{{title}}</h1>
-// 	     <inst-list></inst-list>
-// 	  </div>
-
-//<div class="kdkd" 
-// *ngFor =  'let inst of tempList'
-// >
-// <div> {{inst.instId}} </div>
-// </div>  
