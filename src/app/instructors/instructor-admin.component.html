@@ -1,0 +1,19 @@
+<p>Instructor Admin Page</p>
+<h1>{{errorMessage}}</h1>
+
+<div *ngIf='instructors' >   
+  <div class="inst-list" 
+    *ngFor =  'let inst of instructors'
+  >
+    <div
+      id="{{inst.instId}}" 
+      style="border: 1px solid grey; margin: 10px; padding: 20px;"
+    >
+      <div>Name: {{inst.instName}}</div>
+      <div>Field: {{inst.instField}}</div> 
+      <div>Email: {{inst.instEmail}}</div>
+      <div>Status: {{inst.instStatus}}</div>
+      <button (click)='openDialog(inst.instId)'>Edit!</button>
+    </div>    
+  </div>
+</div>

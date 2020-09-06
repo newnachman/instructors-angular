@@ -4,10 +4,22 @@
 <input type='text' class="input" (change)="checkFields()" placeholder="Insert field" [(ngModel)] = 'field'/>
 <input type='text' class="input" (change)="checkFields()" placeholder="Insert a short title" [(ngModel)] = 'title'/>
 <input type='text' class="input" (change)="checkFields()" placeholder="Insert description" [(ngModel)] = 'descr'/>
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert email" [(ngModel)] = 'email'/>
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert phone" [(ngModel)] = 'phone'/>
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert link" [(ngModel)] = 'link'/>
+<input type='text' class="input" (change)="checkFields()" placeholder="Insert diplomas" [(ngModel)] = 'diploma'/>
 
-<input type="file" class="input" name="" id=""  (input)="onInputImg($event)">
-
-<button *ngIf=showBtn class="btn create"
+<input 
+type="file" 
+style="display: none;"  
+(change)="onInputImg($event)"
+#imgPicker
+>
+<button class="ibtn" (click)="imgPicker.click()">Pick image</button>
+<button *ngIf=showUploadBtn (click)='uploadImg()' class="btn create">
+    Upload image!
+</button>
+<button *ngIf=showCreateBtn class="btn create"
 
 (click)= 'submitCreate()' 
 >
@@ -27,6 +39,8 @@
     </div>
 </div>
 
-<h1
-*ngIf='responseString'
->{{name}} your new ID is: {{responseString}}</h1>
+<p *ngIf='responseString'> 
+    Your new ID is: 
+    <span class="id-header"> {{responseString}} </span>
+    Please keep it for future identification issues.
+</p>

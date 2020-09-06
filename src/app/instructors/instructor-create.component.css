@@ -3,14 +3,12 @@
   box-shadow: 7px 4px 20px 0px #a0a0a0;
   margin: 15px;
   padding: 15px 35px 15px 35px;
-  border-radius: .25rem;
+  border-radius: .15rem;
   color: white;
   font-size: 20px;
   font-weight: 700;
 }
-.input {
-  margin-right: 15px;
-}
+
 .ErrMsg {
   color: salmon;
   font-size: 16px;

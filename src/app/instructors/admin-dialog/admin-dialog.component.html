@@ -1,0 +1,51 @@
+<p mat-dialog-title>admin-dialog works!</p>
+<div mat-dialog-content>
+
+<div
+*ngIf='instructor'
+>
+
+    <div class="admn-dtld-inst-wrp" >
+        <div
+            style="border: 1px solid grey; margin: 10px; padding: 20px;"
+        >
+        <input type="text" [(ngModel)] = 'instructor.instName' placeholder="insert name" value="{{instructor.instName}}">
+        <input type="text" [(ngModel)] = 'instructor.instField' placeholder="insert Field" value="{{instructor.instField}}">
+        <input type="text" [(ngModel)] = 'instructor.instTitle' placeholder="insert Title" value="{{instructor.instTitle}}">
+        <input type="text" [(ngModel)] = 'instructor.instEmail' placeholder="insert Email" value="{{instructor.instEmail}}">
+        <input type="text" [(ngModel)] = 'instructor.instPhone' placeholder="insert Phone" value="{{instructor.instPhone}}">
+        <input type="text" [(ngModel)] = 'instructor.instLink' placeholder="insert Link" value="{{instructor.instLink}}">
+        <input type="text" [(ngModel)] = 'instructor.instDiploma' placeholder="insert Diploma" value="{{instructor.instDiploma}}">
+        <input type="text" [(ngModel)] = 'instructor.instDescription' placeholder="insert Description" value="{{instructor.instDescription}}">
+             
+            
+            <div>instImage {{instructor.instImage}}</div>
+        </div>    
+    </div>
+</div>
+
+
+
+
+  <p>your id is: {{data.id}}</p>
+</div>
+<div class="right">
+  <div class="checkbox">
+    <label class="switch">
+      <input [checked]="checked" type="checkbox" (click)=toggleApprove($event)>
+      <span class="slider"></span>
+    </label>
+  </div>
+  <span class="aprv-msg">{{aprvStatusMsg}}</span>
+  <button mat-button (click)=close()>Cancel</button>
+  <button mat-button (click)=update()>Update!</button>
+</div>
+
+<!-- <p >admin-dialog works!</p >
+<div >
+  <p>save?</p>
+</div >
+<div >
+  <button >cancel</button>
+  <button >save</button>
+</div > -->

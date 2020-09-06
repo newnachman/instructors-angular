@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { InstructorService } from './instructor.service';
-import { InstructorCreateBlueprint } from './instructor-create-blueprint';
+import { InstructorCreate } from './blueprints/instructor-blueprint-create';
 
 @Component({
     templateUrl: './instructor-create.component.html',
@@ -16,74 +16,81 @@ export class InstructorCreateComponent {
     private instructorService: InstructorService) { 
     }
 
-  response : any;
-  responseString : string;
+  response: any;
+  responseString: string;
   name: string;
   field: string;
   title: string;
+  email: string;
+  phone: string;
+  link: string;
+  diploma: string;
   descr: string;
   img: string;
-  showBtn = false;
+  showCreateBtn = false;
+  showUploadBtn = false;
   errMsg = false;
   imgLoad = false;
   errorMessage: string;
-  data = new InstructorCreateBlueprint();
-
-  //_______ Trial only:
-
-  authData: string;
-  auth = false;
-
-  saveAuth() {
-    localStorage.setItem('Item 1', 'bla');
-    this.auth = true;
-    
-  }
-
-  showAuth() {
-    this.authData = localStorage.getItem('Item 1');
-  }
-
-//_______ End of trial      |   Dont forget to delete!   |
+  data = new InstructorCreate();
+  input: HTMLInputElement;
 
   onInputImg(e: Event) {
+    this.showCreateBtn = false;
+    this.showUploadBtn = true;
+    this.input = e.target as HTMLInputElement;
+  }
+
+  uploadImg() {
+    this.showUploadBtn = false;
     this.imgLoad = true;
-    const input = e.target as HTMLInputElement;
-    this.instructorService.createImg(input.files[0])
+    this.instructorService.createImg(this.input.files[0])
     .subscribe(
-      url => {
-        this.img = url;
+      (data) => {
+        this.img = data['url'] ;
+        console.log("delete: " + data['delete_url']);
+        console.log("size: " + data['size']);
+        // change UI messages
         this.imgLoad = false;
+        // change UI verify if can activate button create
         this.checkFields()       
       });
   }
   
   submitCreate() {
-    // if (this.checkFields()) {
-      this.errMsg = false;
-      this.data.name  = this.name;
-      this.data.field = this.field;
-      this.data.title = this.title;
-      this.data.descr = this.descr;
-      this.data.img   = this.img;
-    // } else {
-    //   this.errMsg = true;
-    // }
+    this.errMsg = false;
+    // pass data to the "IIblueprint" 
+    this.data.name     = this.name;
+    this.data.field    = this.field;
+    this.data.title    = this.title;
+    this.data.descr    = this.descr;
+    this.data.img      = this.img;
+    this.data.email    = this.email;
+    this.data.phone    = this.phone;
+    this.data.link     = this.link;
+    this.data.diploma  = this.diploma;
     
-    this.instructorService.createInstructor(this.data).subscribe((res)=>{
-      this.response = res;
-      this.responseString = this.response['created_id'] + " - " + this.response['message'] ;
-      this.emptyFields();
-    });
+    // send data to the API
+    this.instructorService.createInstructor(this.data)
+    .subscribe(
+      (res)=>{
+        this.response = res;
+        console.log(this.response['created_id']);
+        console.log(this.response['message']);
+        this.responseString = "Q574/" + this.response['created_id'] + "/21b@r"
+        this.emptyFields();
+      });
   }
   
   checkFields() {
-    if(this.name && this.field && this.title && this.descr && this.img){
-      this.showBtn = true;
+    if(
+      this.name && this.field && this.title && this.descr && this.img && this.email && this.phone && this.diploma && this.link
+      ){
+      this.showCreateBtn = true;
       this.errMsg = false;
     }else {
       this.errMsg = true;
-      this.showBtn = false;
+      this.showCreateBtn = false;
     }
   }
 
@@ -91,6 +98,10 @@ export class InstructorCreateComponent {
     this.name  = "";
     this.field = "";
     this.title = "";
+    this.email = "";
+    this.phone = "";
+    this.link = "";
+    this.diploma = "";
     this.descr = "";
     this.img   = "";  
   }

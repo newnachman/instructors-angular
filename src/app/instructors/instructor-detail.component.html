@@ -3,19 +3,23 @@
 <h2>instructor detail page</h2>
 <p>{{crntID}}</p>
 <div
-*ngIf='instructors'
+*ngIf='instructor'
 >
 
     <div class="kdkd" >
         <div
             style="border: 1px solid grey; margin: 10px; padding: 20px;"
         >
-            
-            <div>{{instructors.instName}}</div> 
-            <div>{{instructors.instField}}</div>
-            <div>{{instructors.instTitle}}</div>
-            <div>{{instructors.instDescription}}</div>
-            <div>{{instructors.instImage}}</div>
+            <div>instName {{instructor.instName}}</div> 
+            <div>instField {{instructor.instField}}</div>
+            <div>instTitle {{instructor.instTitle}}</div>
+            <div>instEmail {{instructor.instEmail}}</div>
+            <div>instPhone {{instructor.instPhone}}</div>
+            <div>instLink {{instructor.instLink}}</div>
+            <div>instDiploma {{instructor.instDiploma}}</div>
+            <div>instStatus {{instructor.instStatus}}</div>
+            <div>instDescription {{instructor.instDescription}}</div>
+            <div>instImage {{instructor.instImage}}</div>
         </div>    
     </div>
 </div>

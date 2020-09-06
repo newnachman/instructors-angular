@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { IInstructor } from './instructor-blueprint';
+import { Component, OnInit } from '@angular/core';
+import { IInstructorShort } from './blueprints/instructor-blueprint-short';
 import { InstructorService } from './instructor.service';
 
 @Component({
       templateUrl: './instructors-list.component.html'
 })
 
-export class InstructorsListComponent {
+export class InstructorsListComponent implements OnInit {
     
     errorMessage: string;
     _listFilter: string;
@@ -18,35 +18,27 @@ export class InstructorsListComponent {
         this.filteredInstructors = this.listFilter ? this.performFilter(this.listFilter) : this.instructors;
     }
 
-    filteredInstructors: IInstructor[];
-    instructors: IInstructor[] = [];
+    // IInstructorShort[] represent array of type (interface) IInstructorShort,
+    // that contains only list of main-data (short version) about the instructors:
+    filteredInstructors: IInstructorShort[];
+    instructors: IInstructorShort[];
 
-      constructor(private instructorService: InstructorService) {
-         
-      }
-    //   onRatingClicked(message: string): void {
-    //        this.pageTitle = 'instructors List: ' + message; 
-    //   }
-      performFilter(filterBy: string): IInstructor[]{
-          filterBy = filterBy.toLocaleLowerCase();
-          return this.instructors.filter((instructors: IInstructor) =>
-          instructors.instField.toLocaleLowerCase().indexOf(filterBy) !== -1)
-      }
-    //   toggleImage(): void {
-    //       this.showImage = !this.showImage;
-    //   }
-      ngOnInit(): void { 
-            this.instructorService.getInstructors().subscribe({
-                next: instructors => {
-                    this.instructors = instructors;
-                    this.filteredInstructors = this.instructors;
-                },
-                error: (err: string) => this.errorMessage = err
-            }) 
-            
-      }
+    constructor(private instructorService: InstructorService) {}
 
-
-
+    performFilter(filterBy: string): IInstructorShort[]{
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.instructors.filter((instructors: IInstructorShort) =>
+        instructors.instField.toLocaleLowerCase().indexOf(filterBy) !== -1)
+    }
+  
+    ngOnInit(): void { 
+        this.instructorService.getInstructors('null').subscribe({
+            next: instructors => {
+                this.instructors = instructors;
+                this.filteredInstructors = this.instructors;
+            },
+            error: (err: string) => this.errorMessage = err
+        }) 
+    }
     
 }

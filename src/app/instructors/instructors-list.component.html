@@ -17,13 +17,15 @@
        *ngFor =  'let inst of filteredInstructors'
     >
             <div
+                id="{{inst.instId}}" 
                 [routerLink]="['/instructor', inst.instId]" 
                 style="border: 1px solid grey; margin: 10px; padding: 20px;"
             >
-                <div>Instructor id [{{inst.instId}}]</div>
                 <div>Name: {{inst.instName}}</div>
-                <div>Short description: {{inst.instTitle}}</div>
                 <div>Field: {{inst.instField}}</div> 
+                <div>Short description: {{inst.instTitle}}</div>
+                <div>Email: {{inst.instEmail}}</div>
+                <div>Status: {{inst.instStatus}}</div>
             </div>    
         </div>
     </div>

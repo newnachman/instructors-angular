@@ -5,27 +5,204 @@
   background-color: lightseagreen;
   display: block;
 }
-
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+@keyframes loginwrap-in {
+  0%  {opacity:0; margin-top: -80px;}
+  50%  {opacity:0; margin-top: -30px;}
+  80%  {opacity:0.1; margin-top: 0px;}
+  100%  {opacity:1; margin-top: 20px;}
+}
+@keyframes loginwrap-out {
+  0%  {opacity:1; margin-top: 20px;}
+  40%  {opacity:0.2; margin-top: 0px;}
+  80%  {opacity:0.1; margin-top: -30px;}
+  100%  {opacity:0; margin-top: -80px;}
+}
+#login-wrap {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+.wrap-in {
+  animation-name: loginwrap-in;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+}
+.wrap-out {
+  animation-name: loginwrap-out;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+input:focus {
+  outline: none !important;
+}
+.lgn-btn {
+  background-color: black;
+  border: none;
+  margin: 0 5px;
+  height: 43px;
+  padding: 10px 15px;
+}
+.lgn-btn:hover {
+  color: white;
+  box-shadow: 0 4px 15px 0px rgb(0 0 0 / 50%), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.show-pswd {
+  color: black;
+  position: relative;
+  right: 10px;
+}
+.logininput-wrap, .msg {
+  border: 1px solid black;
+  display: inline;
+  margin-right: 7px;
+  margin-left: 7px;
+  border-radius: .15rem;
+  padding: .6rem 0.2rem;
+}
+.msg {
+  padding: .6rem 1rem;
+  font-weight: 700;
+  border: 1px dashed black;
+}
+.login-input {
+  border-color: transparent;
+  background-color: transparent;
+  color: white;
+  padding: .5rem 0.2rem;
+}
+.login-input::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
+}
+.login-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: black;
+}
+.login-input::-ms-input-placeholder { /* Microsoft Edge */
+ color: black;
+}
+.nav-link {
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all .5s ease-in-out;
+  display: inline-block;
+  border: none;
+  border-radius: 0;
+  padding: 0px 2px 5px 2px;
+  margin-left: 3%;
+  font-size: 20px;
+}
 .nav-link:hover {
   font-weight: 700;
-  /* text-decoration: underline; */
-  transform: scale(1);
 }
-
-.nav-link {
-  margin-right: 10px;
-  color: white;
-  transition: all .5s ease-in-out;
-  border-radius: .25rem;
-  display: block;
-  padding: .5rem 1rem;
+@keyframes thefadeout {
+  0%  {opacity:1; left: 0px;}
+  100%  {opacity:0; left: -20px;}
 }
-
+@keyframes thefadein {
+  0%  {opacity:0; left: -20px; }
+  100%  {opacity:1; left: 0px;}
+}
+.frame-login {
+  display: inline-block;
+  width: 50px;
+}
+ul .frame-login>.myfadeout {
+  animation-name: thefadeout;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+ul .frame-login>.myfadein {
+  animation-name: thefadein;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+.frame-login>.login-open {
+  opacity:1;
+  display: inline;
+  position: relative;
+}
+.frame-login>.login-close {
+  opacity:0;
+  display: none;
+  position: relative;
+}
 .active-link, .active-link:focus, .active-link:active, li.nav-link:focus, li.nav-link:active {
   color: black;
-  border: 1px solid black;
-  outline: none;
+  border-bottom: 1px solid black;
+  outline: none !important;
   font-weight: 700;
+  padding: 0px 2px 5px 2px;
+  height: fit-content;
+  border-radius: 0;
 }
 
 
+@media screen and (max-width: 950px){
+  .top{
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .nav-link {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 4px 0;
+    height: fit-content;
+    padding: 5px 0px 5px 0px;
+  }
+  .nav-link:hover {
+    background-color: #82a2a1a1;
+  }
+  .active-link {
+    border-bottom: none;
+  }
+
+  @keyframes loginwrap-in {
+    0%  {opacity:0; margin-top: -80px;}
+    50%  {opacity:0.2; margin-top: -30px;}
+    80%  {opacity:0.2; margin-top: 0px;}
+    100%  {opacity:1; margin-top: 5px;}
+  }
+  @keyframes loginwrap-out {
+    0%  {opacity:1; margin-top: 5px;}
+    40%  {opacity:0.2; margin-top: 0px;}
+    80%  {opacity:0.2; margin-top: -120px;}
+    100%  {opacity:0; margin-top: -190px;}
+  }
+  #login-wrap {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 5px 20px;
+  }
+  .login-input {
+    width: 90%;
+    text-align: center;
+  }
+  .logininput-wrap, .msg {
+    display: block;
+    height: fit-content;
+    padding: 5px;
+    margin: 10px 0;
+  }
+  .lgn-btn {
+    display: block;
+    width: 100%;
+    margin: auto;
+  }
+}
