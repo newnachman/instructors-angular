@@ -1,3 +1,12 @@
+.title3 {
+  display: block;
+  font-size: 6.8rem;
+  font-weight: 700;
+  text-align: right;
+  color: white;
+  padding-top: 20px;
+}
+
 .btn {
   background-color: lightseagreen;
   box-shadow: 7px 4px 20px 0px #a0a0a0;
@@ -14,4 +23,12 @@
   font-size: 16px;
   font-weight: 700;
   display: inline;
+}
+
+input.join-input {
+  margin: 15px;
+}
+
+.join-section {
+  margin-bottom: 150px;
 }

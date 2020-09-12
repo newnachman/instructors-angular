@@ -1,26 +1,42 @@
-<h2>    
-    Instructors List Page!
-</h2>
- <div >
-    
-    <div class='col-md-4'>
-        <p>Filter By</p>
-        <input type='text' 
-        [(ngModel)] = 'listFilter'/>
+<div class="wide-container  bc-coralight">
+    <div class="center-container">
+        <h1 class="welcome-header twist">
+           <span class="title1 align-center">
+                FIND 
+            </span> 
+           <span class="title2">
+                &lt; YOUR > 
+            </span> 
+           <span class="title3 align-center">
+                INSTRUCTOR!
+            </span>
+        </h1>        
+    </div>
+</div>
+
+ <div >   
+    <div class='center-container'>
+        <h2 class="more-content">
+            WELCOME TO THE INSTRUCTOR-FACTORY INDEX!
+        </h2>
+        <div class="filter-by">
+            <p>Filter by training domain</p>
+            <input type='text' 
+            [(ngModel)] = 'listFilter'/>
+        </div>
+        <div class="show-as">
+            <div class="inst-list">
+                <span>list <i class="fa fa-list"></i></span>
+            </div>
+            <div class="inst-card">
+                <span>cards <i class="fa fa-id-card-o"></i></span>
+            </div>
+        </div>
     </div>
 
-    <div
-    *ngIf='instructors'
-    >
-    
-        <div class="kdkd" 
-       *ngFor =  'let inst of filteredInstructors'
-    >
-            <div
-                id="{{inst.instId}}" 
-                [routerLink]="['/instructor', inst.instId]" 
-                style="border: 1px solid grey; margin: 10px; padding: 20px;"
-            >
+    <div class='center-container' *ngIf='instructors'>
+        <div class="kdkd" *ngFor =  'let inst of filteredInstructors'>
+            <div id="{{inst.instId}}"  [routerLink]="['/instructor', inst.instId]">
                 <div>Name: {{inst.instName}}</div>
                 <div>Field: {{inst.instField}}</div> 
                 <div>Short description: {{inst.instTitle}}</div>
@@ -29,4 +45,4 @@
             </div>    
         </div>
     </div>
-</div> 
+</div>  

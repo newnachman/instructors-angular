@@ -1,6 +1,111 @@
-<h2 class="welcome-header">
-    Welcome!
-</h2>
-<p class="more-content">
-    {{welcomeTitle}}
-</p>
+
+<div class="wide-container bc-greensea">
+    <div class="center-container welcome-header">
+        <h1 class="">
+           <span class="title1">THE </span> 
+           <span class="title2"> INSTRUCTOR </span> 
+           <span class="title3"> FACTORY</span>
+        </h1>
+        <h2 class="align-center">
+            Worlds largest instructors index.
+        </h2>
+    </div>
+</div>
+
+<div class="wide-container bc-white img-row">
+   <div class="align-center img-column">
+    <div class="img-wrapper align-center app-radius imf1">
+        <img src="assets/img/art.jpg" alt="" class="show ">
+        <div class="imgfooter  ">
+            <p>Teachers for all ages</p>            
+        </div>
+    </div> 
+    <div class="img-wrapper align-center app-radius imf3">
+        <img src="assets/img/general.jpg" alt="" class="show ">
+        <div class="imgfooter  ">
+            <p>Group training</p>
+        </div>
+    </div>
+    <div class="img-wrapper align-center app-radius imf2">
+        <img src="assets/img/sport.jpg" alt="" class="show ">
+        <div class="imgfooter  ">
+            <p>Personal training</p>
+        </div>
+    </div> 
+   </div>
+
+   <div class="align-center img-column">
+    <div class="img-wrapper align-center app-radius imf3">
+        <img src="assets/img/martialarts.jpg" alt="" class="show ">
+        <div class="imgfooter  ">
+            <p>Profesionals guides</p>
+        </div>
+    </div> 
+    <div class="img-wrapper align-center app-radius imf2">
+        <img src="assets/img/digital.jpg" alt="" class="show ">
+        <div class="imgfooter  ">
+            <p>All fields trainings</p>
+        </div>
+    </div> 
+    <div class="img-wrapper align-center app-radius imf1">
+        <img src="assets/img/bike.jpg" alt="" class="show ">
+        <div class="imgfooter  ">
+            <p>Best instructors</p>
+        </div>
+    </div> 
+   </div>
+</div>
+
+<div class="wide-container bc-black">
+    <div class="center-container align-center go-list">
+        <h2>
+            Looking for instructor?
+        </h2>
+        <button [routerLink]="['/instructors']" class="ibtn">Click here!</button>
+    </div>
+</div>
+
+<div class="center-container bc-white">
+    
+    <h3 class="why-us">
+        The instructor factory collect the best 
+        instructors due to hard <span>background check</span>  work, 
+        expirience verification and also certifications when needed.
+    </h3>
+    <br>
+    <h3 class="why-us">
+        Our instructor index includs the best, motivation-driven instructors, 
+        that must meet the <span>high standard</span> (and strict requirements) of the instructors factory -
+        for been included in the index...  <a [routerLink]="['/instructors']" href="" class="">Go to the index ></a>
+    </h3>
+</div>
+<div class="wide-container bc-coralight go-join align-center">
+    <div class="center-container">
+        <h3 class="welcome-header">
+            Are you an instructor? 
+            <div>WELCOME!</div> 
+        </h3>
+        <button [routerLink]="['/create']" class="ibtn">Join here!</button>
+    </div>
+</div>
+<div class="wide-container bc-white footer">
+    <div class="footer-grid-wrp">
+        <div class="footer-grid-item left">
+            <h4><cite>"The greatest good you can do for another is not just to share your riches but to reveal to him his own." </cite></h4>
+            <p> (Benjamin Disraeli) </p>
+        </div>
+        <div class="footer-grid-item right">
+            <div class="footer-contact">
+                <h4>Contact us at:</h4>
+                <a href="">i@instructorfactory.com</a>
+            </div>
+            <hr>
+            <div class="footer-nav">
+                <h4>Site navigation:</h4>
+                <a [routerLink]="['/welcome']" href="">HOME</a>
+                <a [routerLink]="['/instructors']" href="">THE INDEX</a>
+                <a [routerLink]="['/create']" href="">JOIN</a>
+            </div>
+        </div>
+    </div>
+</div>

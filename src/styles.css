@@ -2,12 +2,71 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
-
-.container {
-  margin-top: 30px;
-  padding: 15px;
+html {
+  font-size: 100%;
 }
-
+.main-container {
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+}
+.center-container {
+  display: block;
+    width: 80%;
+    margin: 40px auto;
+    padding: 1%;
+}
+.wide-container {
+  display: block;
+  width: 100%;
+  padding: 1%;
+  margin: 40px 0;
+}
+.bc-white {
+  background-color: white;
+  color: black;
+}
+.bc-black {
+  background-color: black;
+  color: lightseagreen;
+}
+.bc-greensea {
+  background-color: lightseagreen;
+  color: black;
+}
+.bc-coralight {
+  background-color:  #fc8385b8;
+  color: black;
+}
+.bc-grey {
+  background-color:  #D1DEDE;
+  color: black;
+}
+.bc-yellow {
+  background-color:  #fcff4a;
+  color: lightseagreen;
+}
+.display-none {
+  display: none !important;
+}
+.display-flex {
+  display: flex !important;
+}
+.display-inline {
+  display: inline !important;
+}
+.display-inline-block {
+  display: inline-block !important;
+}
+.display-block {
+  display: block !important;
+}
+.align-center {
+  text-align: center !important;
+}
+.app-radius {
+  border-radius: .15rem;
+}
 .ibtn {
   margin: 15px;
   height: 40px;
@@ -24,3 +83,53 @@
   color: lightseagreen;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.welcome-header {
+  text-align: center;
+}
+.title1 {
+  display: block;
+  font-size: 5rem;
+  text-align: left;
+}
+.title2 {
+  display: block;
+  font-size: 6rem;
+  font-weight: 900;
+}
+.title3 {
+  display: block;
+  font-size: 7rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+@media screen and (max-width: 800px){
+  .title1 {
+    font-size: 14vw;
+  }
+  .title2 {
+    font-size: 12.4vw;
+  }
+  .title3 {
+    font-size: 11vw;
+  }
+}
+
+
+
+@media screen and (min-width: 950px){
+  html { font-size: 110%; }
+}
+@media screen and (min-width: 1150px){
+  html { font-size: 120%; }
+}
+@media screen and (min-width: 1350px){
+  html { font-size: 130%; }
+}
+@media screen and (max-width: 600px){
+  .center-container {
+      width: 90%;
+  }
+}
+

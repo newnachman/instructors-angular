@@ -1,9 +1,14 @@
 
 .top {
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   background-color: lightseagreen;
   display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
 }
 .nav {
   display: flex;
@@ -12,30 +17,60 @@
   margin-bottom: 0;
   list-style: none;
 }
-@keyframes loginwrap-in {
-  0%  {opacity:0; margin-top: -80px;}
-  50%  {opacity:0; margin-top: -30px;}
-  80%  {opacity:0.1; margin-top: 0px;}
-  100%  {opacity:1; margin-top: 20px;}
+@keyframes hideme {
+  from {opacity: 1;}
+  to {opacity: 0;}
+ }
+ @keyframes showme {
+  from {opacity: 0;}
+  to {opacity: 1;}
+ }
+.hide-me {
+  animation-name: hideme;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
-@keyframes loginwrap-out {
-  0%  {opacity:1; margin-top: 20px;}
-  40%  {opacity:0.2; margin-top: 0px;}
-  80%  {opacity:0.1; margin-top: -30px;}
-  100%  {opacity:0; margin-top: -80px;}
+.show-me {
+  animation-name: showme;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.menu-mobile-btn {
+  display: none;
 }
 #login-wrap {
   margin-top: 20px;
   text-align: center;
   width: 100%;
+  border-bottom: 1px solid #0000001a; 
+  padding-bottom: 20px; 
 }
-.wrap-in {
-  animation-name: loginwrap-in;
+li.login-special-position {
+  position: absolute;
+  right: 100px;
+}
+@keyframes fade-down-login {
+  from  {opacity:0; margin-top: -80px;}
+  /* 50%  {opacity:0; margin-top: -80px;}
+  80%  {opacity:0.1; margin-top: 0px;} */
+  to  {opacity:1; margin-top: 20px;}
+}
+@keyframes fade-up-login {
+  from  {opacity:1; margin-top: 20px;}
+  /* 30%  {opacity:0.1; margin-top: -10px;}
+  65%  {opacity:0.05; margin-top: -40px;} */
+  to  {opacity:0; margin-top: -80px;}
+}
+.wrap-in-login {
+  animation-name: fade-down-login;
   animation-duration: 2s;
   animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
-.wrap-out {
-  animation-name: loginwrap-out;
+.wrap-out-login {
+  animation-name: fade-up-login;
   animation-duration: 2s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
@@ -95,24 +130,23 @@ input:focus {
   display: inline-block;
   border: none;
   border-radius: 0;
-  padding: 0px 2px 5px 2px;
+  padding: 0px 2px 15px 2px;
   margin-left: 3%;
-  font-size: 20px;
+  font-size: 1.2rem;
 }
 .nav-link:hover {
   font-weight: 700;
 }
 @keyframes thefadeout {
   0%  {opacity:1; left: 0px;}
-  100%  {opacity:0; left: -20px;}
+  100%  {opacity:0; left: -15px;}
 }
 @keyframes thefadein {
-  0%  {opacity:0; left: -20px; }
+  0%  {opacity:0; left: -15px; }
   100%  {opacity:1; left: 0px;}
 }
 .frame-login {
   display: inline-block;
-  width: 50px;
 }
 ul .frame-login>.myfadeout {
   animation-name: thefadeout;
@@ -145,17 +179,80 @@ ul .frame-login>.myfadein {
 }
 
 
+@media screen and (min-width: 951px){
+  #menu-links {
+    display: flex !important;
+  }
+} 
+
+
+/* [[[[[[[[[[[[[[[[[[[[[[[[[                    ]]]]]]]]]]]]]]]]]]]] */
+/* [[[[[[[[[[[[[[[[[[[[[[[[[    MOBILE VIEW:    ]]]]]]]]]]]]]]]]]]]] */
+/* [[[[[[[[[[[[[[[[[[[[[[[[[                    ]]]]]]]]]]]]]]]]]]]] */
+
+
 @media screen and (max-width: 950px){
   .top{
     padding-right: 0;
     padding-left: 0;
+    padding-top: 10px;
+    border-bottom: 1px solid #0000000f;
+    padding-bottom: 20px; 
   }
+  /* #menu-links {
+    display: none;
+  } */
   .nav {
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
+  }
+  .active-link, .active-link:focus, .active-link:active, li.nav-link:focus, li.nav-link:active {
+    border-bottom: none;
+  }
+  .nav-pills {
+    padding-top: 30px;
+  }
+  .menu-mobile-btn {
+    display: block;
+    width: 100%;
+    font-family: 'Grandstander', cursive;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: all 2.5s ease;
+    position: absolute;
+    top: 20px;
+    opacity: 0;
+    z-index: 9;
+    cursor: pointer;
+  }
+  #menu-btn2 {
+    position: absolute;
+    top: 20px;
+    right: -4px;
+    opacity: 1;
+    z-index: 1;
+  }
+  .left-bracket, .right-bracket {
+    display: inline-block;
+  }
+  .left-bracket { 
+    transition: transform 0.5s ease;
+    transform: translate(-2px, 0px);
+  }
+  .right-bracket { 
+    transition: transform 0.5s ease;
+    transform: translate(2px, 0px);
+  }
+  .menu-mobile-btn-wrp:hover .left-bracket { 
+    transform: translate(2px, 0px);
+  }
+  .menu-mobile-btn-wrp:hover .right-bracket { 
+    transform: translate(-2px, 0px);
   }
   .nav-link {
     display: block;
@@ -171,24 +268,53 @@ ul .frame-login>.myfadein {
   .active-link {
     border-bottom: none;
   }
-
-  @keyframes loginwrap-in {
-    0%  {opacity:0; margin-top: -80px;}
-    50%  {opacity:0.2; margin-top: -30px;}
-    80%  {opacity:0.2; margin-top: 0px;}
+  @keyframes fade-down-login {
+    0%  {opacity:0; margin-top: -220px;}
+    /* 30%  {opacity:0.2; margin-top: -50px;}
+    70%  {opacity:0.2; margin-top: -20px;} */
     100%  {opacity:1; margin-top: 5px;}
   }
-  @keyframes loginwrap-out {
+  @keyframes fade-up-login {
     0%  {opacity:1; margin-top: 5px;}
-    40%  {opacity:0.2; margin-top: 0px;}
-    80%  {opacity:0.2; margin-top: -120px;}
-    100%  {opacity:0; margin-top: -190px;}
+    /* 40%  {opacity:0.2; margin-top: 0px;}
+    80%  {opacity:0.2; margin-top: -120px;} */
+    100%  {opacity:0; margin-top: -220px;}
   }
+  @keyframes fade-down-menu {
+    from  {opacity:0; margin-top: -190px;}
+    /* 50%  {opacity:0; margin-top: -80px;}
+    80%  {opacity:0.1; margin-top: 0px;} */
+    to  {opacity:1; margin-top: 0px;}
+  }
+  @keyframes fade-up-menu {
+    from  {opacity:1; margin-top: 0px;}
+    /* 30%  {opacity:0.1; margin-top: -10px;}
+    65%  {opacity:0.05; margin-top: -40px;} */
+    to  {opacity:0; margin-top: -210px;}
+  }
+  .wrap-in-menu {
+    animation-name: fade-down-menu;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    padding-top: 30px;
+  }
+  .wrap-out-menu {
+    animation-name: fade-up-menu;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  li#login-link {
+    position: initial;
+}
   #login-wrap {
     display: block;
     text-align: center;
     width: 100%;
     margin: 5px 20px;
+    border-bottom: none;
+    padding-bottom: 0; 
   }
   .login-input {
     width: 90%;

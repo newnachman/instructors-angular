@@ -1,39 +1,68 @@
 <nav class="top navbar navbar-expand navbar-light bg=light">
+ 
+  <div  class="display-inline-block menu-mobile-btn-wrp">
+    <a class="menu-mobile-btn" id="menu-btn2" >
+      Hide menu 
+      <div class="left-bracket">[ </div>
+       <i class="fa fa-times"></i>  
+      <div class="right-bracket"> ]</div>
+    </a>
+    <a class="menu-mobile-btn" id="menu-btn1"  (click)='toggleMenuMobile()' >
+      Show menu 
+      <div class="left-bracket">[ </div>
+       <i class="fa fa-bars"></i>  
+      <div class="right-bracket"> ]</div>
+    </a>
+  </div>
   
-  <ul class="nav nav-pills">
-      <li class="nav-link" [routerLink]="['/welcome']" routerLinkActive="active-link">Home</li>    
-      <li class="nav-link" [routerLink]="['/instructors']" routerLinkActive="active-link">Instructors List</li>
-      <li class="nav-link" [routerLink]="['/create']" routerLinkActive="active-link">Create Instructor</li>
-      <li class="nav-link" *ngIf='showLogOutBtn' [routerLink]="['/admin']" routerLinkActive="active-link">Admin Page</li>
-<!-- ggg -->
+  <ul class="nav nav-pills" id="menu-links">
+      <li class="nav-link" [routerLink]="['/welcome']" routerLinkActive="active-link" (click)="closeMobileMenu()">HOME</li>    
+      <li class="nav-link" [routerLink]="['/instructors']" routerLinkActive="active-link" (click)="closeMobileMenu()">THE INDEX</li>
+      <li class="nav-link" [routerLink]="['/create']"  routerLinkActive="active-link" (click)="closeMobileMenu()">JOIN!</li> 
+      <li class="nav-link" *ngIf='showLogOutBtn' [routerLink]="['/admin']" routerLinkActive="active-link" (click)="closeMobileMenu()">ADMIN</li>
+       
+      
       <li 
-      class="nav-link" 
-      (click)= 'toggleLogIn()' 
+      id="login-link"
+      class="nav-link login-special-position" 
+      (click)= 'toggleLogInView()' 
       >
         <div class="frame-login">
-          <span id="open" class="login-open">Open </span>
-          <span id="close" class="login-close">Close </span>
+          <span id="open" class="login-open">[ open </span>
+          <span id="close" class="login-close">[ close </span>
         </div>  
-        Login
+        <span class=""> login ]</span> 
       </li>
-<!--  -->
-      <li class="nav-link" *ngIf='showLogOutBtn' (click)= 'logout()' >Logout</li>
 
-      <li id="login-wrap" class="wrap-in" *ngIf='openLogIn'>
+      <li class="nav-link login-special-position" *ngIf='showLogOutBtn' (click)= 'logout()' >[ logout ]</li>
+
+      <li id="login-wrap" class="wrap-in display-none">
         <div class="logininput-wrap">
-          <input placeholder="User name" value="{{user}}" class="login-input" type="text" [(ngModel)] = 'user'>
+          <input 
+          placeholder="User name" 
+          value="{{user}}" 
+          class="login-input" 
+          type="text" 
+          [(ngModel)] = 'user'>
         </div>
         <div class="logininput-wrap">
-          <input placeholder="Password" value="{{password}}" class="login-input" type="{{pswdTogl}}" [(ngModel)] = 'password'>
-          <span class="show-pswd" (mouseup)= 'showAsPswd()' (mousedown)= 'showAsText()'	>
+          <input 
+          placeholder="Password" 
+          value="{{password}}" 
+          class="login-input" 
+          type="{{pswdTogl}}" 
+          [(ngModel)] = 'password'
+          (keyup.enter)="logIn()"
+          >
+          <span class="show-pswd" (mouseup)= "pswdTogl = 'password'" (mousedown)= "pswdTogl = 'text'"	>
             <i class="fa fa-eye"></i>
           </span>
         </div>
-        <button class="ibtn lgn-btn" (click)= 'logIn()'>Login!</button>
+        <button class="ibtn lgn-btn" (click)='logIn()'>Login!</button>
         <span *ngIf=message class="msg">{{message}}</span>
       </li>
   </ul>
 </nav>
-<div class='container'>
+<div class='main-container'>
   <router-outlet></router-outlet>
 </div>

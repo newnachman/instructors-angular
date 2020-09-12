@@ -3,7 +3,8 @@ import { IInstructorShort } from './blueprints/instructor-blueprint-short';
 import { InstructorService } from './instructor.service';
 
 @Component({
-      templateUrl: './instructors-list.component.html'
+      templateUrl: './instructors-list.component.html',
+      styleUrls: ['./instructors-list.component.css']
 })
 
 export class InstructorsListComponent implements OnInit {

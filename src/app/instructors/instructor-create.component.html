@@ -1,46 +1,62 @@
-<h1>Create Iinstructor Page!</h1>
-
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert name" [(ngModel)] = 'name'/>
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert field" [(ngModel)] = 'field'/>
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert a short title" [(ngModel)] = 'title'/>
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert description" [(ngModel)] = 'descr'/>
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert email" [(ngModel)] = 'email'/>
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert phone" [(ngModel)] = 'phone'/>
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert link" [(ngModel)] = 'link'/>
-<input type='text' class="input" (change)="checkFields()" placeholder="Insert diplomas" [(ngModel)] = 'diploma'/>
-
-<input 
-type="file" 
-style="display: none;"  
-(change)="onInputImg($event)"
-#imgPicker
->
-<button class="ibtn" (click)="imgPicker.click()">Pick image</button>
-<button *ngIf=showUploadBtn (click)='uploadImg()' class="btn create">
-    Upload image!
-</button>
-<button *ngIf=showCreateBtn class="btn create"
-
-(click)= 'submitCreate()' 
->
-    <i class="fa fa-check"></i>
-    Create!
-</button>
-<div *ngIf='errMsg' class="ErrMsg">
-    must full all fields!
-</div>
-<div *ngIf='imgLoad' class="ErrMsg">
-  | Uploading image ... | 
-</div>
-<div *ngIf='img'>
-    <div>
-        <img src="{{img}}" width="100px" alt="the image of {{name}}">
-        <p>image path is: <br> {{img}}</p>
+<div class="wide-container  bc-grey">
+    <div class="center-container">
+        <h1 class="welcome-header twist">
+           <span class="title3 align-center">
+                COME 
+                JOIN 
+                US! 
+            </span>
+        </h1>       
     </div>
 </div>
 
-<p *ngIf='responseString'> 
-    Your new ID is: 
-    <span class="id-header"> {{responseString}} </span>
-    Please keep it for future identification issues.
-</p>
+   
+<div class="center-container join-section">
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert name" [(ngModel)] = 'name'/>
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert field" [(ngModel)] = 'field'/>
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert a short title" [(ngModel)] = 'title'/>
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert description" [(ngModel)] = 'descr'/>
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert email" [(ngModel)] = 'email'/>
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert phone" [(ngModel)] = 'phone'/>
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert link" [(ngModel)] = 'link'/>
+    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert diplomas" [(ngModel)] = 'diploma'/>
+    
+    <input 
+    type="file" 
+    style="display: none;"  
+    (change)="onInputImg($event)"
+    #imgPicker
+    >
+    <button class="ibtn" (click)="imgPicker.click()">Pick image</button>
+    <button *ngIf=showUploadBtn (click)='uploadImg()' class="btn create">
+        Upload image!
+    </button>
+    <button *ngIf=showCreateBtn class="btn create"
+    
+    (click)= 'submitCreate()' 
+    >
+        <i class="fa fa-check"></i>
+        Create!
+    </button>
+    <div *ngIf='errMsg' class="ErrMsg">
+        must full all fields!
+    </div>
+    <div *ngIf='imgLoad' class="ErrMsg">
+      | Uploading image ... | 
+    </div>
+    <div *ngIf='img'>
+        <div>
+            <img src="{{img}}" width="100px" alt="the image of {{name}}">
+            <p>image path is: <br> {{img}}</p>
+        </div>
+    </div>
+    
+    <p *ngIf='responseString'> 
+        Your new ID is: 
+        <span class="id-header"> {{responseString}} </span>
+        Please keep it for future identification issues.
+    </p>
+    
+
+</div>
+

@@ -4,6 +4,7 @@ import { IInstructor } from './blueprints/instructor-blueprint';
 import { InstructorService } from './instructor.service';
 
 @Component({
+  // selector: 'inst-detailed',
     templateUrl: './instructor-detail.component.html',
     
   })
