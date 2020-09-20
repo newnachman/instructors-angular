@@ -1,4 +1,5 @@
-<div class="wide-container  bc-coralight">
+<div class="wrp-all">
+<div class="wide-container top-container bc-coralight">
     <div class="center-container">
         <h1 class="welcome-header twist">
            <span class="title1 align-center">
@@ -14,35 +15,79 @@
     </div>
 </div>
 
- <div >   
-    <div class='center-container'>
-        <h2 class="more-content">
-            WELCOME TO THE INSTRUCTOR-FACTORY INDEX!
-        </h2>
-        <div class="filter-by">
-            <p>Filter by training domain</p>
-            <input type='text' 
-            [(ngModel)] = 'listFilter'/>
-        </div>
-        <div class="show-as">
-            <div class="inst-list">
-                <span>list <i class="fa fa-list"></i></span>
-            </div>
-            <div class="inst-card">
-                <span>cards <i class="fa fa-id-card-o"></i></span>
-            </div>
-        </div>
+ 
+<div class="wide-container align-center">
+    <h2 class="list-header">
+     Welcome to the instructor-factory index.
+    </h2>
+</div> 
+<div class='center-container list-panel'>
+    <div class="filter-by">
+        <p>Filter by training domain</p>
+        <input type='text' 
+        placeholder="example: 'sports' or 'art'"
+        [(ngModel)] = 'listFilter'/>
     </div>
+    <div class="show-as">
+        <p>Show as:</p>
+        <span class="opt inst-list" (click)="asListView()">
+            <span>list <i class="fa fa-list"></i></span>
+        </span>
+        <span class="opt inst-card" (click)="asCardView()">
+            <span>cards <i class="fa fa-id-card-o"></i></span>
+        </span>
+    </div>
+</div>
 
-    <div class='center-container' *ngIf='instructors'>
-        <div class="kdkd" *ngFor =  'let inst of filteredInstructors'>
-            <div id="{{inst.instId}}"  [routerLink]="['/instructor', inst.instId]">
-                <div>Name: {{inst.instName}}</div>
-                <div>Field: {{inst.instField}}</div> 
-                <div>Short description: {{inst.instTitle}}</div>
-                <div>Email: {{inst.instEmail}}</div>
-                <div>Status: {{inst.instStatus}}</div>
-            </div>    
+<div class='center-container' *ngIf='instructors'
+    [ngClass]="{
+        'wrp-as-card': !isList
+    }"
+>
+    <div
+        *ngFor =  'let inst of filteredInstructors' 
+        class="list-item" 
+        id="{{inst.instId}}"         
+        [ngClass]="listView"
+    >
+        <div class="img-wrp">
+            <img src="{{inst.instImg}}" alt="{{inst.instName}} photo"
+            onerror="this.onerror=null;this.src='assets/img/avatar.jpg';"
+            >
+        </div>
+        <div class="data-wrp">
+            <div class="name">Name: {{inst.instName}}</div>
+            <div class="field">Field: {{inst.instField}}</div> 
+            <div class="title">Short description: {{inst.instTitle}}</div>
+            <div class="email">Email: {{inst.instEmail}}</div>
+        </div>
+        <div class="goto">
+            <a href="" [routerLink]="['/instructor', inst.instId]">
+                See more >
+            </a>
+        </div>
+        
+    </div>    
+</div>
+</div> 
+<div class="wide-container bc-white footer">
+    <div class="footer-grid-wrp">
+        <div class="footer-grid-item left">
+            <h4><cite>"The greatest good you can do for another is not just to share your riches but to reveal to him his own." </cite></h4>
+            <p> (Benjamin Disraeli) </p>
+        </div>
+        <div class="footer-grid-item right">
+            <div class="footer-contact">
+                <h4>Contact us at:</h4>
+                <a href="">i@instructorfactory.com</a>
+            </div>
+            <hr>
+            <div class="footer-nav">
+                <h4>Site navigation:</h4>
+                <a [routerLink]="['/welcome']" href="">HOME</a>
+                <a [routerLink]="['/instructors']" href="">THE INDEX</a>
+                <a [routerLink]="['/create']" href="">JOIN</a>
+            </div>
         </div>
     </div>
-</div>  
+</div> 

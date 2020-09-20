@@ -63,7 +63,6 @@ export class InstructorService {
     .pipe(map((response) => {
         let resData = new Object();
         resData['url'] = response['data']['url'];
-        resData['delete_url'] = response['data']['delete_url'];
         resData['size'] = response['data']['size'];
         return resData;
       }

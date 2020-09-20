@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 import { InstructorService } from '../instructor.service';
 import { IInstructor } from '../blueprints/instructor-blueprint';

@@ -11,6 +11,9 @@ export class InstructorsListComponent implements OnInit {
     
     errorMessage: string;
     _listFilter: string;
+    listView: string = 'as-list';
+    isList: boolean = true;
+
     get listFilter(): string {
         return this._listFilter;
     }
@@ -25,6 +28,17 @@ export class InstructorsListComponent implements OnInit {
     instructors: IInstructorShort[];
 
     constructor(private instructorService: InstructorService) {}
+
+    
+
+    asListView() {
+        this.listView = 'as-list';
+        this.isList = true;
+    }
+    asCardView() {
+        this.listView = 'as-card';
+        this.isList = false;
+    }
 
     performFilter(filterBy: string): IInstructorShort[]{
         filterBy = filterBy.toLocaleLowerCase();

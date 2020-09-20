@@ -1,62 +1,119 @@
-<div class="wide-container  bc-grey">
-    <div class="center-container">
-        <h1 class="welcome-header twist">
-           <span class="title3 align-center">
+<div class="wide-container bc-grey top-container">
+    <div class="center-container join">
+        <h1 class="welcome-header">
+           <span class="main-title align-center">
                 COME 
                 JOIN 
                 US! 
             </span>
         </h1>       
-    </div>
+    </div> 
+    <div class="headertxt-join">
+        <h2>
+            <span class="join-txt3">
+                Do you want to be a part of our familly?
+            </span>
+            <span class="join-txt1">
+                Are you a pationated guide? 
+            </span>
+            <span class="join-txt2">
+                Are you a great instructor?
+            </span>
+            <span class="join-txt4">
+                If its a big <div> YES! </div> fill this form <span><i class="fa fa-arrow-circle-down"></i></span>
+            </span>
+        </h2>
+    </div>  
 </div>
 
-   
+ 
 <div class="center-container join-section">
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert name" [(ngModel)] = 'name'/>
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert field" [(ngModel)] = 'field'/>
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert a short title" [(ngModel)] = 'title'/>
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert description" [(ngModel)] = 'descr'/>
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert email" [(ngModel)] = 'email'/>
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert phone" [(ngModel)] = 'phone'/>
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert link" [(ngModel)] = 'link'/>
-    <input type='text' class="join-input" (change)="checkFields()" placeholder="Insert diplomas" [(ngModel)] = 'diploma'/>
-    
-    <input 
-    type="file" 
-    style="display: none;"  
-    (change)="onInputImg($event)"
-    #imgPicker
-    >
-    <button class="ibtn" (click)="imgPicker.click()">Pick image</button>
-    <button *ngIf=showUploadBtn (click)='uploadImg()' class="btn create">
-        Upload image!
-    </button>
-    <button *ngIf=showCreateBtn class="btn create"
-    
-    (click)= 'submitCreate()' 
-    >
-        <i class="fa fa-check"></i>
-        Create!
-    </button>
-    <div *ngIf='errMsg' class="ErrMsg">
-        must full all fields!
-    </div>
-    <div *ngIf='imgLoad' class="ErrMsg">
-      | Uploading image ... | 
-    </div>
-    <div *ngIf='img'>
-        <div>
-            <img src="{{img}}" width="100px" alt="the image of {{name}}">
-            <p>image path is: <br> {{img}}</p>
+    <h2>
+        ❋ All fields are required!
+    </h2>
+    <div class="join-form">
+        <div class="form-left">
+            <input type='text' class="join-input" placeholder="Your name" [(ngModel)] = 'name'/>
+            <input type='text' class="join-input" placeholder="Field / Category" [(ngModel)] = 'field'/>
+
+            <label for="title"> Short self-presentation: </label>
+            <textarea 
+            id="title"
+            maxlength="180"
+            class="join-input" 
+            placeholder=
+            "A line or two to atract potential students, in example: 'Third place in the World Cycling Championships. Teaching experience - 12 years'" 
+            [(ngModel)] = 'title'></textarea> 
+            <label for="title" class="lbl-btm" > * Will be display on the index list, <u> and</u> in your personal instructor page. </label>
+            
+            <input type='text' class="join-input" placeholder="Your Email" [(ngModel)] = 'email'/>
+            <input type='text' class="join-input" placeholder="Your phone" [(ngModel)] = 'phone'/>
+            <input type='text' class="join-input" placeholder="Your link" [(ngModel)] = 'link'/>
+            <input type='text' class="join-input" placeholder="Your diplomas" [(ngModel)] = 'diploma'/>
+        </div>
+        
+        <div class="form-right">
+
+            <label for="descr"> About you: </label>
+            <textarea id="descr" class="join-input" placeholder="Here is the palce for a long description of your work and your capabilities... " [(ngModel)] = 'descr'></textarea>
+            <label for="descr" class="lbl-btm" > * Will be display at your personal instructor page. </label>
+            
+            <div class="img-upload-wrp">
+                <div>
+                    <img src="{{img}}" alt="the image of {{name}}">
+                </div>
+                <div class="img-msg-wrp"> 
+                    <div *ngIf='imgLoad' class="img-msg img-stts">{{imgStatusMsg}} </div>
+                    <div *ngIf='imgName' class="img-msg">Image name: {{imgName}}</div>
+                </div>
+                <input type="file" style="display: none;" (change)="onInputImg($event)" #imgPicker >
+                <button [ngClass]="{'btn-dsbl': !goPickImg }" [disabled]="!goPickImg" class="ibtn" (click)="imgPicker.click()">
+                    Pick image
+                </button> 
+                <button [ngClass]="{'btn-dsbl': goPickImg || imgStatusMsg === 'Image saved.' }" [disabled]="goPickImg || imgLoadStep" class="ibtn" (click)='uploadImg()' >
+                    Save image
+                </button>
+            </div>                      
         </div>
     </div>
-    
-    <p *ngIf='responseString'> 
-        Your new ID is: 
-        <span class="id-header"> {{responseString}} </span>
-        Please keep it for future identification issues.
-    </p>
-    
-
+    <div *ngIf='errorMessage || responseString' class="message-wrp">
+        <div *ngIf='errorMessage' class="err-msg">
+            {{errorMessage}}
+        </div>
+        <div *ngIf='responseString' class="rspns-msg"> 
+                {{responseString}} 
+        </div>
+    </div>
+    <div class="submit-join">
+        <div class="submit-txt">
+            <p>
+                Before sending your data, please verify the content again!
+            </p>
+        </div>
+        <button class="ibtn create" (click)= 'checkAndSubmit()'>
+            <i class="fa fa-check"></i>
+            Create!
+        </button>        
+    </div>
 </div>
-
+<div class="wide-container bc-white footer">
+    <div class="footer-grid-wrp">
+        <div class="footer-grid-item left">
+            <h4><cite>"The greatest good you can do for another is not just to share your riches but to reveal to him his own." </cite></h4>
+            <p> (Benjamin Disraeli) </p>
+        </div>
+        <div class="footer-grid-item right">
+            <div class="footer-contact">
+                <h4>Contact us at:</h4>
+                <a href="">i@instructorfactory.com</a>
+            </div>
+            <hr>
+            <div class="footer-nav">
+                <h4>Site navigation:</h4>
+                <a [routerLink]="['/welcome']" href="">HOME</a>
+                <a [routerLink]="['/instructors']" href="">THE INDEX</a>
+                <a [routerLink]="['/create']" href="">JOIN</a>
+            </div>
+        </div>
+    </div>
+</div>

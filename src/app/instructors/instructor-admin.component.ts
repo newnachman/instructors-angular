@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
 import { IInstructorShort } from './blueprints/instructor-blueprint-short';
 import { InstructorService } from './instructor.service';

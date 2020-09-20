@@ -6,4 +6,5 @@ export interface IInstructorShort {
   instTitle: string;
   instEmail: string;
   instStatus: string;
+  instImg: string;
 }

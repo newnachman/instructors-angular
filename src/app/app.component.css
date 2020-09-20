@@ -169,7 +169,7 @@ ul .frame-login>.myfadein {
   position: relative;
 }
 .active-link, .active-link:focus, .active-link:active, li.nav-link:focus, li.nav-link:active {
-  color: black;
+  color: #363636;
   border-bottom: 1px solid black;
   outline: none !important;
   font-weight: 700;
@@ -305,9 +305,9 @@ ul .frame-login>.myfadein {
     animation-timing-function: linear;
     animation-fill-mode: forwards;
   }
-  li#login-link {
+  li#login-link, li#logout-link {
     position: initial;
-}
+  }
   #login-wrap {
     display: block;
     text-align: center;

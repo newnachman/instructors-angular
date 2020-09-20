@@ -1,34 +1,221 @@
-.title3 {
+
+.join {
+  margin-bottom: 0;
+} 
+.main-title {
   display: block;
-  font-size: 6.8rem;
+  font-size: 6.5rem;
   font-weight: 700;
   text-align: right;
   color: white;
   padding-top: 20px;
+} 
+.headertxt-join {
+  text-shadow: 2px 2px 5px #00000052;
+  width: 80%;
+  margin: auto;
+  margin-top: -30px;
+  text-align: center;
 }
-
-.btn {
-  background-color: lightseagreen;
-  box-shadow: 7px 4px 20px 0px #a0a0a0;
-  margin: 15px;
-  padding: 15px 35px 15px 35px;
-  border-radius: .15rem;
+.headertxt-join h2 {
+  font-size: 2rem;
+}
+.headertxt-join span {
+  display: block;
+  padding: 5px;
   color: white;
-  font-size: 20px;
-  font-weight: 700;
 }
-
-.ErrMsg {
-  color: salmon;
-  font-size: 16px;
-  font-weight: 700;
+.headertxt-join .join-txt3 {
+  margin: auto;
+  padding: 10px;
+  color: lightseagreen;
+  text-shadow: none;
+  font-weight: 900;
+}
+.headertxt-join .join-txt4 {
+  font-size: 2.6rem;
+  text-align: center;
+  margin: 40px auto;
+  font-weight: 900;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  width: 80%;
+}
+.headertxt-join .join-txt4 div{
+  font-weight: 900;
+  text-shadow: none;
+  display: inline-block;
+  color: lightseagreen;
+  transform: rotate(3deg);
+}
+.headertxt-join .join-txt4 span{
+  font-size: 2rem;
+  font-weight: 900;
+  text-shadow: none;
   display: inline;
+  color: lightseagreen;
 }
-
-input.join-input {
-  margin: 15px;
-}
-
 .join-section {
-  margin-bottom: 150px;
+  margin: auto;
+}
+.join-section h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: lightseagreen;
+}
+.join-form {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns:50% 50%;
+}
+.join-input {
+  padding: 15px;
+  width: 80%;
+  margin: 0 auto 35px auto;
+  display: block;
+}
+.join-form textarea {
+  height: 140px;
+  resize: none;
+  margin-bottom: 0;
+}
+.join-form textarea#descr {
+  height: 420px;
+  resize: none;
+}
+.join-form label {
+  display: block;
+  padding: 0 15px;
+  width: 80%;
+  margin: auto;
+  background-color: #d1dede59;
+}
+.join-form .lbl-btm {
+  margin-bottom: 35px;
+  font-size: 0.8rem;
+}
+.img-upload-wrp {
+  width: 80%;
+  margin: 30px auto;
+  text-align: center;
+}
+.img-upload-wrp img {
+ width: 60%;
+ margin-bottom: 20px;
+}
+.img-upload-wrp .ibtn {
+  transform: scale(1.5);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.img-upload-wrp .ibtn.btn-dsbl {
+  transform: none;
+  box-shadow: none;
+  background-color: #20b2aaa6;
+}
+.img-upload-wrp .ibtn.btn-dsbl:hover {
+  color: white;
+}
+.img-msg-wrp .img-stts {
+  border: 2px solid lightseagreen;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 20px;
+  color: lightseagreen;
+}
+.submit-join {
+  width: 90%;
+  margin: 60px auto;
+  position: relative;
+}
+.submit-txt {
+  border: 1px solid lightseagreen;
+  width: 70%;
+  display: inline-block;
+  padding: 15px;
+  text-align: center;
+  color: lightseagreen;
+  font-weight: 900;
+}
+.submit-txt p {
+  margin: 0;
+}
+.submit-join .ibtn.create {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  width: 30%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 45%), 0 6px 20px 0 rgb(0 0 0 / 42%);
+}
+.message-wrp {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.err-msg {
+  background-color: #fc8385b8;
+  padding: 15px;
+}
+.rspns-msg {
+  background-color: #20b2aaa6;
+  padding: 15px;
+}
+
+@media screen and (max-width: 1280px) {
+  .join {
+    margin-top: 30px;
+  }
+  .main-title {
+    font-size: 5rem;
+  } 
+}
+@media screen and (max-width: 950px) {
+  .join-form {
+    grid-template-columns:100%;
+  }
+}
+@media screen and (max-width: 790px) {
+  .join {
+    margin-top: 15px;
+  }
+  .main-title {
+    font-size: 4.5rem;
+  } 
+  .headertxt-join h2 {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 710px) {
+  .main-title {
+    font-size: 3.8rem;
+  } 
+  .headertxt-join {
+    margin-top: -20px;
+  }
+  .submit-join .ibtn.create {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 540px) {
+  .main-title {
+    font-size: 3rem;
+  } 
+  .headertxt-join h2 {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .main-title {
+    font-size: 2.6rem;
+  } 
+  .submit-join .ibtn.create {
+    font-size: 1rem;
+  }
 }

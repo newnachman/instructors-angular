@@ -13,6 +13,9 @@
       <div>Field: {{inst.instField}}</div> 
       <div>Email: {{inst.instEmail}}</div>
       <div>Status: {{inst.instStatus}}</div>
+      <div class="img"> {{inst.instImg}}
+        <img src="{{inst.instImg}}" alt="{{inst.instName}} photo">
+      </div>
       <button (click)='openDialog(inst.instId)'>Edit!</button>
     </div>    
   </div>

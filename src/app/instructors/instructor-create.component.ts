@@ -24,41 +24,43 @@ export class InstructorCreateComponent {
   email: string;
   phone: string;
   link: string;
+  imgStatusMsg: string;
   diploma: string;
   descr: string;
-  img: string;
-  showCreateBtn = false;
-  showUploadBtn = false;
-  errMsg = false;
+  img: string = "http://tempimag.es/600x600/20B2AA/D1DEDE/temporary image.png";
+  imgName: string = "";
+  goPickImg = true;
   imgLoad = false;
+  imgLoadStep = false;
+  replaceImgBtn = false;
   errorMessage: string;
   data = new InstructorCreate();
   input: HTMLInputElement;
 
   onInputImg(e: Event) {
-    this.showCreateBtn = false;
-    this.showUploadBtn = true;
+    console.log("pick img clicked");
     this.input = e.target as HTMLInputElement;
+    this.imgName = this.input.files[0].name;
+    this.goPickImg = false;
   }
-
+ 
   uploadImg() {
-    this.showUploadBtn = false;
+    this.imgStatusMsg = "Saving your image ..."
     this.imgLoad = true;
+    this.imgLoadStep = true;
     this.instructorService.createImg(this.input.files[0])
     .subscribe(
       (data) => {
         this.img = data['url'] ;
-        console.log("delete: " + data['delete_url']);
-        console.log("size: " + data['size']);
+        let kb = (data['size'] * 0.0009765625).toFixed(2);
+        console.log("size: " + kb + " KB.");
         // change UI messages
-        this.imgLoad = false;
-        // change UI verify if can activate button create
-        this.checkFields()       
+        this.imgStatusMsg = "Image saved."
       });
   }
-  
+
+
   submitCreate() {
-    this.errMsg = false;
     // pass data to the "IIblueprint" 
     this.data.name     = this.name;
     this.data.field    = this.field;
@@ -77,20 +79,31 @@ export class InstructorCreateComponent {
         this.response = res;
         console.log(this.response['created_id']);
         console.log(this.response['message']);
-        this.responseString = "Q574/" + this.response['created_id'] + "/21b@r"
+        this.responseString = this.response['message'];
         this.emptyFields();
       });
   }
   
-  checkFields() {
-    if(
-      this.name && this.field && this.title && this.descr && this.img && this.email && this.phone && this.diploma && this.link
+  checkAndSubmit() {
+    this.errorMessage = "";
+    // Check if user has picked img but didn't save it:
+    if(!this.goPickImg && !this.imgLoadStep){
+      this.errorMessage = "Must save your image!";
+    }
+    else if(
+      this.name            && 
+      this.imgLoadStep     && 
+      this.field           && 
+      this.title           && 
+      this.descr           && 
+      this.email           && 
+      this.phone           && 
+      this.diploma         && 
+      this.link
       ){
-      this.showCreateBtn = true;
-      this.errMsg = false;
+      this.submitCreate();
     }else {
-      this.errMsg = true;
-      this.showCreateBtn = false;
+      this.errorMessage = "Must full all fields!";
     }
   }
 
@@ -100,10 +113,10 @@ export class InstructorCreateComponent {
     this.title = "";
     this.email = "";
     this.phone = "";
-    this.link = "";
+    this.link  = "";
     this.diploma = "";
     this.descr = "";
-    this.img   = "";  
+    this.img   = "http://tempimag.es/600x600/20B2AA/D1DEDE/temporary image.png";
   }
 
 }
