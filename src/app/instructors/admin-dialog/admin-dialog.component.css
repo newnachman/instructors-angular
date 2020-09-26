@@ -10,6 +10,9 @@
   margin: 5px 10px;
   color: white;
 }
+.dialog-top button:hover {
+  color: lightseagreen;
+}
 .dialog-header {
   text-align: center;
   color: lightseagreen;

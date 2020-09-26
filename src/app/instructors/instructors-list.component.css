@@ -67,6 +67,9 @@ span.opt {
   border-bottom: 1px solid;
   cursor: pointer;
 }
+span.opt span {
+  transition: all 0.5s;
+}
 span.opt span:hover {
   text-shadow: 0 0 0px black;
 }
