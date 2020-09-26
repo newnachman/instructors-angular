@@ -2,6 +2,17 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
+/* ------------------- */
+.mat-dialog-container {
+  background: #ffffff !important;
+  color: #000 !important;
+  padding: unset !important;
+}
+.cdk-overlay-dark-backdrop {
+  background: rgb(255 255 255 / 55%) !important;
+}
+/* ---------------------  */
+
 html {
   font-size: 100%;
   color: #363636;

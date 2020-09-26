@@ -6,7 +6,7 @@ import { InstructorService } from './instructor.service';
 @Component({
   // selector: 'inst-detailed',
     templateUrl: './instructor-detail.component.html',
-    
+    styleUrls: ['./instructor-detail.component.css']
   })
 
 export class InstructorDetailComponent implements OnInit {

@@ -35,7 +35,7 @@ export class InstructorsListComponent implements OnInit {
         this.listView = 'as-list';
         this.isList = true;
     }
-    asCardView() {
+    asCardView() { 
         this.listView = 'as-card';
         this.isList = false;
     }

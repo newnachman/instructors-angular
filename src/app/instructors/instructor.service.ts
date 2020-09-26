@@ -15,6 +15,7 @@ export class InstructorService {
   private baseApiUrl = 'http://localhost/php_rest_api/';  
   private getAllUrl: string = this.baseApiUrl + 'api/instructor/read.php';
   private getOneUrl: string = this.baseApiUrl + 'api/instructor/read_one.php';
+  private deleteUrl: string = this.baseApiUrl + 'api/instructor/delete.php';
   private postUrl: string = this.baseApiUrl + 'api/instructor/create.php';
   private imgApiKey: string = "5de2c05513267c8c604f284d793f7a74";
   private userPostUrl: string = this.baseApiUrl + 'api/instructor/auth.php';
@@ -69,8 +70,7 @@ export class InstructorService {
     ));
   }
 
-  updateInstructor(updatData: object, mode: string):Observable<any>{
-    let updateMode = mode;
+  updateInstructor(updatData: object, updateMode: string):Observable<any>{
     let url: string;
     if (updateMode == "toggleApprove") {
       url = this.baseApiUrl + 'api/instructor/update_approve.php';
@@ -78,6 +78,13 @@ export class InstructorService {
       url = this.baseApiUrl + 'api/instructor/update.php';
     }
     return this.http.post(url, updatData, this.httpOptions).pipe(
+      tap(data => JSON.stringify(data)),
+      catchError(this.handleError)
+    ); 
+  }
+  
+  deleteInstructor(data: object) {
+    return this.http.post(this.deleteUrl, data, this.httpOptions).pipe(
       tap(data => JSON.stringify(data)),
       catchError(this.handleError)
     ); 

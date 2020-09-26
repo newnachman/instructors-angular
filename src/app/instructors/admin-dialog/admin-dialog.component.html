@@ -1,51 +1,85 @@
-<p mat-dialog-title>admin-dialog works!</p>
 <div mat-dialog-content>
-
-<div
-*ngIf='instructor'
->
-
-    <div class="admn-dtld-inst-wrp" >
-        <div
-            style="border: 1px solid grey; margin: 10px; padding: 20px;"
-        >
-        <input type="text" [(ngModel)] = 'instructor.instName' placeholder="insert name" value="{{instructor.instName}}">
-        <input type="text" [(ngModel)] = 'instructor.instField' placeholder="insert Field" value="{{instructor.instField}}">
-        <input type="text" [(ngModel)] = 'instructor.instTitle' placeholder="insert Title" value="{{instructor.instTitle}}">
-        <input type="text" [(ngModel)] = 'instructor.instEmail' placeholder="insert Email" value="{{instructor.instEmail}}">
-        <input type="text" [(ngModel)] = 'instructor.instPhone' placeholder="insert Phone" value="{{instructor.instPhone}}">
-        <input type="text" [(ngModel)] = 'instructor.instLink' placeholder="insert Link" value="{{instructor.instLink}}">
-        <input type="text" [(ngModel)] = 'instructor.instDiploma' placeholder="insert Diploma" value="{{instructor.instDiploma}}">
-        <input type="text" [(ngModel)] = 'instructor.instDescription' placeholder="insert Description" value="{{instructor.instDescription}}">
-             
-            
-            <div>instImage {{instructor.instImage}}</div>
-        </div>    
-    </div>
+<div class="wide-container dialog-top bc-greensea">
+  <button class="ibtn" mat-button (click)=close()><i class="fa fa-arrow-circle-left"></i> Close</button>
 </div>
-
-
-
-
-  <p>your id is: {{data.id}}</p>
+<div class="center-container dialog-header">
+  Manage instructor:
 </div>
-<div class="right">
-  <div class="checkbox">
-    <label class="switch">
-      <input [checked]="checked" type="checkbox" (click)=toggleApprove($event)>
-      <span class="slider"></span>
-    </label>
+<div *ngIf='instructor' class="update-area">
+  <div class="admn-dtld-inst-wrp" >
+      <div class="join-section">
+        <div class="join-form">
+          <div class="form-left">
+            <input value="{{instructor.instName}}" type='text' class="join-input" placeholder="Your name" [(ngModel)] = 'instructor.instName'/>
+            <input value="{{instructor.instField}}" type='text' class="join-input" placeholder="Field / Category" [(ngModel)] = 'instructor.instField'/>
+            <label for="title"> Short self-presentation: </label>
+            <textarea 
+            value="{{instructor.instTitle}}"
+            id="title"
+            maxlength="180"
+            class="join-input" 
+            placeholder=
+            "A line or two to atract potential students, in example: 'Third place in the World Cycling Championships. Teaching experience - 12 years'" 
+            [(ngModel)] = 'instructor.instTitle'></textarea> 
+            <input value="{{instructor.instEmail}}" type='email' ngModel email class="join-input" placeholder="Your Email" [(ngModel)] = 'instructor.instEmail'/>
+            <input value="{{instructor.instPhone}}" type='tel' class="join-input" placeholder="Your phone" [(ngModel)] = 'instructor.instPhone'/>
+            <input value="{{instructor.instLink}}" type='text' class="join-input" placeholder="Your link" [(ngModel)] = 'instructor.instLink'/>
+            <input value="{{instructor.instDiploma}}" type='text' class="join-input" placeholder="Your diplomas" [(ngModel)] = 'instructor.instDiploma'/>
+          </div>
+          <div class="form-right">
+            <label for="descr"> About you: </label>
+            <textarea value="{{instructor.instDescription}}" id="descr" class="join-input" placeholder="Here is the palce for a long description of your work and your capabilities... " [(ngModel)] = 'instructor.instDescription'></textarea>
+            <div class="img-upload-wrp">
+              <div class="img-and-dlt-wrp">
+                <img src="{{instructor.instImage}}" alt="the image of {{instructor.instName}}" 
+                onerror="this.onerror=null;this.src='assets/img/avatar.jpg';">
+                <div class="dlt-wrp">
+                  <button class="ibtn btn-delete-img" (click)='deleteImg()'>Delete image</button>
+                </div>
+              </div>
+              <div class="img-msg-wrp"> 
+                <div *ngIf='imgLoad' class="img-stts">{{imgStatusMsg}} </div>
+                <div *ngIf='imgName' class="img-name">Image name: {{imgName}}</div>
+              </div>
+              <input type="file" style="display: none;" (change)="onInputImg($event)" #imgPicker >
+              <button [ngClass]="{'btn-dsbl': !goPickImg }" [disabled]="!goPickImg" class="ibtn btn-grey" (click)="imgPicker.click()">
+                  Pick image
+              </button> 
+              <button [ngClass]="{'btn-dsbl': goPickImg || imgStatusMsg === 'Image uploaded.' }" [disabled]="goPickImg || imgLoadStep" class="ibtn btn-grey" (click)='uploadImg()' >
+                  Upload image
+              </button>              
+            </div>                      
+          </div>
+        </div>       
+      </div>       
   </div>
-  <span class="aprv-msg">{{aprvStatusMsg}}</span>
-  <button mat-button (click)=close()>Cancel</button>
-  <button mat-button (click)=update()>Update!</button>
+</div>
+<div *ngIf='errorMessage || message' class="message-wrp">
+  <div *ngIf='errorMessage' class="err-msg">
+      {{errorMessage}}
+  </div>
+  <div *ngIf='message' class="rspns-msg"> 
+          {{message}} 
+  </div>
+</div>
+<div class="controls-wrp">
+  <div class="wrp-right">
+    <button class="ibtn" mat-button (click)=update()><i class="fa fa-save"></i> Save changes</button>
+    <div class="chkbx-wrp" [ngClass]= "{'is-aprv': aprvStatus }" >
+      <div class="aprv-arrow">Change approve status here <i class="fa fa-mail-forward"></i> </div>
+      <span class="aprv-msg">{{aprvStatusMsg}}</span>
+      <div class="checkbox">
+        <label class="switch">
+          <input [checked]="checked" type="checkbox" (click)=toggleApprove($event)>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="wrp-left">
+    <button class="ibtn" mat-button (click)=close()><i class="fa fa-arrow-circle-left"></i> Close</button>
+    <button class="ibtn" mat-button (click)=deleteAll()><i class="fa fa-trash-o"></i> Delete instructor</button>
+  </div>
 </div>
 
-<!-- <p >admin-dialog works!</p >
-<div >
-  <p>save?</p>
-</div >
-<div >
-  <button >cancel</button>
-  <button >save</button>
-</div > -->
+</div>

@@ -1,22 +1,86 @@
-<p>Instructor Admin Page</p>
-<h1>{{errorMessage}}</h1>
-
-<div *ngIf='instructors' >   
-  <div class="inst-list" 
-    *ngFor =  'let inst of instructors'
-  >
-    <div
-      id="{{inst.instId}}" 
-      style="border: 1px solid grey; margin: 10px; padding: 20px;"
-    >
-      <div>Name: {{inst.instName}}</div>
-      <div>Field: {{inst.instField}}</div> 
-      <div>Email: {{inst.instEmail}}</div>
-      <div>Status: {{inst.instStatus}}</div>
-      <div class="img"> {{inst.instImg}}
-        <img src="{{inst.instImg}}" alt="{{inst.instName}} photo">
+<div class="wrp-all">
+ 
+   
+  <div class="wide-container">
+      <h2 class="admin-header">
+        <i class="fa fa-dashboard"></i>
+        Admin page 
+      </h2>
+  </div> 
+  <div class='center-container list-panel'>
+      <div class="filter-by">
+          <p>Filter by training domain</p>
+          <input type='text' 
+          placeholder=""
+          [(ngModel)] = 'valueFilterField'/>
       </div>
-      <button (click)='openDialog(inst.instId)'>Edit!</button>
-    </div>    
+      <div class="filter-by">
+          <p>Filter by instructor Email</p>
+          <input type='text' 
+          placeholder=""
+          [(ngModel)] = 'valueFilterMail'/>
+      </div>
+      <div class="show-as">
+        <button class="ibtn" (click)='approvedFirst()'>Approved first
+            <i [ngClass]="isApprovedFirst ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i>
+        </button>
+        <div class="btn-wrp">
+            <button class="ibtn" (click)='notApprovedFirst()'>Approved last
+                <i [ngClass]="isApprovedFirst ? 'fa fa-square-o' : 'fa fa-check-square-o'"></i>
+            </button>
+            
+        </div>
+      </div>
   </div>
-</div>
+  
+  <div class='center-container' *ngIf='instructors'>
+      <div
+          *ngFor = 'let inst of filteredInstructors' 
+          class="list-item as-list" 
+          id="{{inst.instId}}" 
+          [ngClass]= "inst.instStatus === 'not approved' ? 'red' : 'green'"        
+      >
+          <div class="img-wrp">
+              <img src="{{inst.instImg}}" alt="{{inst.instName}} photo"
+              onerror="this.onerror=null;this.src='assets/img/avatar.jpg';"
+              >
+          </div>
+          <div class="data-wrp">
+              <div class="name">Name: {{inst.instName}}</div>
+              <div class="field">Field: {{inst.instField}}</div> 
+              <div class="title">Short description: {{inst.instTitle}}</div>
+              <div class="email">Email: {{inst.instEmail}}</div>
+              <div class="status">Status: {{inst.instStatus}}</div>
+          </div>
+          <div class="goto">
+              <a href="" [routerLink]="['/instructor', inst.instId]">
+                  Full page >
+              </a>
+              <a  href="javascript:;" class="mdl" (click)='openDialog(inst.instId)'>
+                    {{inst.instStatus === 'not approved' ? 'Approve' : 'Edit'}} >
+              </a>
+          </div>
+      </div>    
+  </div>
+  </div> 
+  <div class="wide-container bc-white footer">
+      <div class="footer-grid-wrp">
+          <div class="footer-grid-item left">
+              <h4><cite>"The greatest good you can do for another is not just to share your riches but to reveal to him his own." </cite></h4>
+              <p> (Benjamin Disraeli) </p>
+          </div>
+          <div class="footer-grid-item right">
+              <div class="footer-contact">
+                  <h4>Contact us at:</h4>
+                  <a href="">i@instructorfactory.com</a>
+              </div>
+              <hr>
+              <div class="footer-nav">
+                  <h4>Site navigation:</h4>
+                  <a [routerLink]="['/welcome']" href="">HOME</a>
+                  <a [routerLink]="['/instructors']" href="">THE INDEX</a>
+                  <a [routerLink]="['/create']" href="">JOIN</a>
+              </div>
+          </div>
+      </div>
+  </div> 

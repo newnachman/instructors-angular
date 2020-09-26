@@ -24,23 +24,25 @@ export class InstructorCreateComponent {
   email: string;
   phone: string;
   link: string;
-  imgStatusMsg: string;
   diploma: string;
   descr: string;
+  errorMessage: string;
+  data = new InstructorCreate();
+  
+  // img properties:
+  imgStatusMsg: string;
   img: string = "http://tempimag.es/600x600/20B2AA/D1DEDE/temporary image.png";
   imgName: string = "";
   goPickImg = true;
   imgLoad = false;
   imgLoadStep = false;
   replaceImgBtn = false;
-  errorMessage: string;
-  data = new InstructorCreate();
-  input: HTMLInputElement;
+  inputImg: HTMLInputElement;
 
   onInputImg(e: Event) {
     console.log("pick img clicked");
-    this.input = e.target as HTMLInputElement;
-    this.imgName = this.input.files[0].name;
+    this.inputImg = e.target as HTMLInputElement;
+    this.imgName = this.inputImg.files[0].name;
     this.goPickImg = false;
   }
  
@@ -48,7 +50,7 @@ export class InstructorCreateComponent {
     this.imgStatusMsg = "Saving your image ..."
     this.imgLoad = true;
     this.imgLoadStep = true;
-    this.instructorService.createImg(this.input.files[0])
+    this.instructorService.createImg(this.inputImg.files[0])
     .subscribe(
       (data) => {
         this.img = data['url'] ;

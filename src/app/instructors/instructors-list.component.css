@@ -70,18 +70,23 @@ span.opt {
 span.opt span:hover {
   text-shadow: 0 0 0px black;
 }
-.as-list {
-  border-bottom: 1px solid #fc8385b8;
-  padding: 15px;
-}
 .list-item {
   position: relative;
+}
+.list-item:nth-child(odd) {
+  background-color: #20b2aa12;
+}
+.list-item:nth-child(even) {
+  background-color: #fc83852b;
 }
 .list-item .img-wrp img {
   max-width: 30%;
 }
 .as-list {
+  margin-bottom: 10px;
   display: flex;
+  border-bottom: 3px solid #fc8385b8;
+  padding: 15px;
 }
 .as-list .img-wrp {
   max-width: 115px;
@@ -135,13 +140,26 @@ span.opt span:hover {
 .as-list .goto {
   position: absolute;
   right: 5%;
-  bottom: -12%;
-  background-color: #ffffff96;
-  font-size: 1.2rem;
-  min-width: 110px;
+  bottom: -10%;
+  font-size: 1rem;
   padding: 20px;
+  text-align: center;
 }
-
+.as-list .goto a {
+  color: #f05c5ed4;
+  background-color: white;
+  display: block;
+  margin: 15px;
+  padding: 15px;
+  box-shadow: 3px 4px 11px 0px #0000005e;
+  transition: all 1s;
+  font-weight: 700;
+}
+.as-list .goto a:hover {
+  text-decoration: none;
+  background-color: #f05c5ed4;
+  color: white;
+}
 
 @media screen and (max-width: 850px){
   .wrp-as-card {

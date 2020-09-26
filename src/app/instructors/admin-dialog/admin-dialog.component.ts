@@ -24,6 +24,37 @@ export class AdminDialogComponent implements OnInit {
   aprvStatusMsg: string;
   aprvStatus: boolean;
   checked: string;
+
+  // img properties:
+  imgStatusMsg: string;
+  imgName: string = "";
+  goPickImg = true;
+  imgLoad = false;
+  imgLoadStep = false;
+  replaceImgBtn = false;
+  inputImg: HTMLInputElement;
+  
+  onInputImg(e: Event) {
+    this.inputImg = e.target as HTMLInputElement;
+    this.imgName = this.inputImg.files[0].name;
+    this.goPickImg = false;
+  }
+ 
+  uploadImg() {
+    this.imgStatusMsg = "Uploading your image ..."
+    this.imgLoad = true;
+    this.imgLoadStep = true;
+    this.instructorService.createImg(this.inputImg.files[0])
+    .subscribe(
+      (data) => {
+        this.instructor.instImage = data['url'] ;
+        console.log("new image has been uploaded: " + this.instructor['instImage']);
+        let kb = (data['size'] * 0.0009765625).toFixed(2);
+        console.log("size: " + kb + " KB.");
+        // change UI messages
+        this.imgStatusMsg = "Image uploaded."
+      });
+  }
   
   ngOnInit(): void {
     let id = this.data.id;
@@ -32,8 +63,9 @@ export class AdminDialogComponent implements OnInit {
       next: instructor => {
           this.instructor = instructor;
           this.aprvStatus = this.instructor.instStatus == "approved" ? true : false ;
+          this.aprvStatusMsg = this.aprvStatus ? "Approved." : "Not approved." ;
           this.checked = this.aprvStatus ? "checked" : "" ;
-
+          console.log("int image: " + this.instructor.instImage);
       },
       error: (err: string) => console.log(err) 
     }) 
@@ -58,8 +90,8 @@ export class AdminDialogComponent implements OnInit {
     let mode = "update";
     this.instructorService.updateInstructor(data, mode).subscribe({
       next: res => {
-          this.message = res;
-          console.log(res);
+          this.message = res['message'];
+          console.log(this.message);
       },
       error: (err: string) => {
         this.errorMessage = err;
@@ -71,10 +103,10 @@ export class AdminDialogComponent implements OnInit {
   toggleApprove(event) {
     if (event.target.checked) {
       this.aprvStatus = true;
-      this.aprvStatusMsg = "instructor approved!";
+      this.aprvStatusMsg = "'Approved'";
     } else {
       this.aprvStatus = false;
-      this.aprvStatusMsg = "instructor is not approved!";
+      this.aprvStatusMsg = "'Approved' canceled";
     }
 
     let data = {
@@ -86,8 +118,51 @@ export class AdminDialogComponent implements OnInit {
     let mode = "toggleApprove";
     this.instructorService.updateInstructor(data, mode).subscribe({
       next: res => {
-          this.message = res;
-          console.log(res);
+          this.message = res['message'];
+          console.log(this.message);
+      },
+      error: (err: string) => {
+        this.errorMessage = err;
+        console.log(this.errorMessage);
+      }
+    }) 
+  } 
+
+  deleteImg(){
+    this.verifyDelete("image");
+  }
+
+  deleteAll(){
+    this.verifyDelete("instructor");
+  }
+
+  verifyDelete(mode: string){
+    if(mode === "image"){
+      if (confirm(
+        "Are you shure you wan to delete image of instructor: " 
+      + this.instructor.instId + " ?"
+      )) {
+        this.instructor.instImage = "";
+    }
+    }else if (mode === "instructor"){
+      if (confirm(
+          "Are you shure you wan to delete <all data> of instructor: " 
+        + this.instructor.instId + " ?"
+        )) {
+        this.deleteInstructor();
+      }
+    }
+  }
+
+  deleteInstructor(){
+    let data = {
+      instId:           this.instructor['instId'],
+      authKey:          localStorage.getItem('authKey'),
+    }
+    this.instructorService.deleteInstructor(data).subscribe({
+      next: res => {
+          this.message = res['message'];
+          console.log(this.message);
       },
       error: (err: string) => {
         this.errorMessage = err;
@@ -99,5 +174,4 @@ export class AdminDialogComponent implements OnInit {
   close() {
     this.dialogRef.close('<close presed>');
   }
-
 }

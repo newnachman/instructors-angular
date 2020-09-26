@@ -33,11 +33,12 @@
     </h2>
     <div class="join-form">
         <div class="form-left">
-            <input type='text' class="join-input" placeholder="Your name" [(ngModel)] = 'name'/>
-            <input type='text' class="join-input" placeholder="Field / Category" [(ngModel)] = 'field'/>
+            <input required type='text' class="join-input" placeholder="Your name" [(ngModel)] = 'name'/>
+            <input required type='text' class="join-input" placeholder="Field / Category" [(ngModel)] = 'field'/>
 
             <label for="title"> Short self-presentation: </label>
             <textarea 
+            required
             id="title"
             maxlength="180"
             class="join-input" 
@@ -46,16 +47,16 @@
             [(ngModel)] = 'title'></textarea> 
             <label for="title" class="lbl-btm" > * Will be display on the index list, <u> and</u> in your personal instructor page. </label>
             
-            <input type='text' class="join-input" placeholder="Your Email" [(ngModel)] = 'email'/>
-            <input type='text' class="join-input" placeholder="Your phone" [(ngModel)] = 'phone'/>
-            <input type='text' class="join-input" placeholder="Your link" [(ngModel)] = 'link'/>
-            <input type='text' class="join-input" placeholder="Your diplomas" [(ngModel)] = 'diploma'/>
+            <input required type='email' ngModel email class="join-input" placeholder="Your Email" [(ngModel)] = 'email'/>
+            <input required type='tel' class="join-input" placeholder="Your phone" [(ngModel)] = 'phone'/>
+            <input required type='text' class="join-input" placeholder="Your link" [(ngModel)] = 'link'/>
+            <input required type='text' class="join-input" placeholder="Your diplomas" [(ngModel)] = 'diploma'/>
         </div>
         
         <div class="form-right">
 
             <label for="descr"> About you: </label>
-            <textarea id="descr" class="join-input" placeholder="Here is the palce for a long description of your work and your capabilities... " [(ngModel)] = 'descr'></textarea>
+            <textarea required id="descr" class="join-input" placeholder="Here is the palce for a long description of your work and your capabilities... " [(ngModel)] = 'descr'></textarea>
             <label for="descr" class="lbl-btm" > * Will be display at your personal instructor page. </label>
             
             <div class="img-upload-wrp">
@@ -66,7 +67,7 @@
                     <div *ngIf='imgLoad' class="img-msg img-stts">{{imgStatusMsg}} </div>
                     <div *ngIf='imgName' class="img-msg">Image name: {{imgName}}</div>
                 </div>
-                <input type="file" style="display: none;" (change)="onInputImg($event)" #imgPicker >
+                <input required type="file" style="display: none;" (change)="onInputImg($event)" #imgPicker >
                 <button [ngClass]="{'btn-dsbl': !goPickImg }" [disabled]="!goPickImg" class="ibtn" (click)="imgPicker.click()">
                     Pick image
                 </button> 
@@ -90,7 +91,7 @@
                 Before sending your data, please verify the content again!
             </p>
         </div>
-        <button class="ibtn create" (click)= 'checkAndSubmit()'>
+        <button class="ibtn create" (click)= 'checkAndSubmit()' type="submit">
             <i class="fa fa-check"></i>
             Create!
         </button>        

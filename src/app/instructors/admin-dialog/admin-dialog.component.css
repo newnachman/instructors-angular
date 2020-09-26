@@ -1,38 +1,100 @@
+
+
+.dialog-top {
+  margin: 0;
+  margin-bottom: 30px;
+  height: 50px;
+}
+.dialog-top button {
+  border: 1px solid white;
+  margin: 5px 10px;
+  color: white;
+}
+.dialog-header {
+  text-align: center;
+  color: lightseagreen;
+  font-weight: 700;
+  font-size: 2rem;
+}
 button {
   background-color: lightseagreen;
   height: 48px;
-  border-radius: .25rem;
   border: none;
-  margin: 5px 10px;
+  margin: 5px 5px;
   padding: 5px 30px;
   color: white;
   font-weight: 700;
+  vertical-align: middle;
 }
-
-.right {
+.update-area {
+  margin-bottom: 100px;
+  padding: 15px;
+}
+.controls-wrp .wrp-right {
   float: right;
+  margin: 10px;
 }
-
-.checkbox {
-  display: inline;
-  vertical-align: top;
+.controls-wrp .wrp-left {
+  float: left;
+  margin: 10px;
+}
+.controls-wrp .fa {
   margin-right: 10px;
 }
-
+.controls-wrp .fa.fa-save {
+  transform: rotate(15deg);
+}
+.chkbx-wrp {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #cccccc;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 300px;
+  margin: 5px;
+}
+.chkbx-wrp .aprv-arrow {
+  position: absolute;
+  bottom: 120%;
+  right: 20%;
+  font-size: 0.8rem;
+  color: lightseagreen;
+  font-family: 'Grandstander', cursive;
+}
+.chkbx-wrp .aprv-arrow i {
+  transform: rotate(65deg);
+  position: absolute;
+  top: 30%;
+  right: -15%;
+}
+.chkbx-wrp.is-aprv {
+  border: 1px solid lightseagreen;
+  color: lightseagreen;
+}
+.chkbx-wrp span.aprv-msg {
+  padding: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.chkbx-wrp .checkbox {
+  vertical-align: bottom;
+  float: right;
+}
 .switch {
   position: relative;
   display: inline-block;
   width: 84px;
   height: 48px;
-  margin: 5px;
+  margin: 0;
+  vertical-align: middle;
 }
-
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -43,9 +105,7 @@ button {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
-  border-radius: .25rem;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -58,13 +118,184 @@ button {
   transition: .4s;
   border-radius: .25rem;
 }
-
 input:checked + .slider {
   background-color: lightseagreen;
 }
-
 input:checked + .slider:before {
   -webkit-transform: translateX(36px);
   -ms-transform: translateX(36px);
   transform: translateX(36px);
 }
+.join-form {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns:50% 50%;
+}
+.join-input {
+  padding: 5px;
+  width: 98%;
+  margin: 0 auto 10px auto;
+  display: block;
+}
+.join-form textarea {
+  height: 100px;
+}
+.join-form textarea#descr {
+  height: 200px;
+}
+.join-form label {
+  display: block;
+  padding: 5px;
+  background-color: #d1dede59;
+  width: 98%;
+  margin: auto;
+}
+.join-form .lbl-btm {
+  margin-bottom: 0px;
+  font-size: 0.8rem;
+}
+.img-upload-wrp {
+  margin: 10px auto;
+  text-align: center;
+}
+.img-and-dlt-wrp {
+ width: 98%;
+ margin: auto;
+ margin-bottom: 30px;
+ background: #eff3f3;
+}
+.img-and-dlt-wrp img {
+ width: 30%;
+ margin-right: 5%;
+}
+.img-and-dlt-wrp .dlt-wrp {
+  width: 60%;
+  display: inline-block;
+ }
+.img-and-dlt-wrp .dlt-wrp button {
+  height: unset;
+  margin: 0;
+  padding: 10px;
+  font-size: 0.8rem;
+  background-color: #ebebeb;
+  color: lightcoral;
+  border: 2px solid;
+ }
+.img-and-dlt-wrp .dlt-wrp button:hover {
+  background-color: white;
+  color: lightcoral;
+ }
+.img-upload-wrp .ibtn {
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.img-upload-wrp .ibtn:hover {
+ background-color: white;
+ color: #8a8a8a;
+}
+.img-upload-wrp .ibtn.btn-dsbl {
+  transform: none;
+  box-shadow: none;
+  background-color: #8a8a8a69;
+}
+.img-upload-wrp .ibtn.btn-dsbl:hover {
+  color: white;
+}
+.img-upload-wrp .btn-grey {
+  background-color: #8a8a8a;
+}
+.img-msg-wrp .img-stts {
+  border: 2px solid lightseagreen;
+  padding: 10px;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 10px;
+  color: lightseagreen;
+}
+.img-msg-wrp .img-name {
+  margin-bottom: 10px;
+  color: lightseagreen;
+}
+.submit-join {
+  width: 90%;
+  margin: 30px auto;
+  position: relative;
+}
+.submit-txt {
+  border: 1px solid lightseagreen;
+  width: 70%;
+  display: inline-block;
+  padding: 15px;
+  text-align: center;
+  color: lightseagreen;
+  font-weight: 900;
+}
+.submit-txt p {
+  margin: 0;
+}
+.submit-join .ibtn.create {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  width: 30%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 45%), 0 6px 20px 0 rgb(0 0 0 / 42%);
+}
+.message-wrp {
+  margin: 5% 15px;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.err-msg {
+  background-color: #fc8385b8;
+  padding: 10px;
+}
+.rspns-msg {
+  background-color: #20b2aa0d;
+  color: lightseagreen;
+  font-weight: 500;
+  padding: 10px;
+  border: 1px solid #20b2aa;
+}
+
+@media screen and (max-width: 950px) {
+  .join-form {
+    grid-template-columns:auto;
+  }
+  .controls-wrp button {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .chkbx-wrp {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    min-width: unset; 
+  }
+  .chkbx-wrp .checkbox { 
+    float: right;
+  }
+  .controls-wrp .wrp-right button {
+    margin-bottom: 50px;
+  }
+  .chkbx-wrp .aprv-arrow {
+    right: 15%;
+  }
+  .controls-wrp .wrp-right, .controls-wrp .wrp-left {
+    float: unset;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 380px) {
+  .chkbx-wrp {
+    font-size: 1.1rem;
+}
+}  
