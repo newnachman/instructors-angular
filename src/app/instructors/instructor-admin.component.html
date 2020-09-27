@@ -53,7 +53,9 @@
               <div class="status">Status: {{inst.instStatus}}</div>
           </div>
           <div class="goto">
-              <a href="" [routerLink]="['/instructor', inst.instId]">
+              <a 
+              *ngIf="inst.instStatus === 'approved'"
+              href="" [routerLink]="['/instructor', inst.instId]">
                   Full page >
               </a>
               <a  href="javascript:;" class="mdl" (click)='openDialog(inst.instId)'>

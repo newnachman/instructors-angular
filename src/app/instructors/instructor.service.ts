@@ -12,7 +12,7 @@ import { IInstructorShort } from './blueprints/instructor-blueprint-short';
 
 export class InstructorService {
 
-  private baseApiUrl = 'http://localhost/php_rest_api/';  
+  private baseApiUrl = 'http://na-devtrain.com/instructor-api/';  
   private getAllUrl: string = this.baseApiUrl + 'api/instructor/read.php';
   private getOneUrl: string = this.baseApiUrl + 'api/instructor/read_one.php';
   private deleteUrl: string = this.baseApiUrl + 'api/instructor/delete.php';
